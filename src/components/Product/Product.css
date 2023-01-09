@@ -1,0 +1,4 @@
+.productItem:hover #product-add-to-card-hover {
+  height: 50px;
+  transition: height 0.25s ease-in;
+}
