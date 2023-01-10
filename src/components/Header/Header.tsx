@@ -1,4 +1,5 @@
 import NavigationLink from "./NavigationLink";
+
 const Header = () => {
   return (
     <header>
@@ -58,6 +59,14 @@ const Header = () => {
           <div
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
             id="mobile-menu-2"
+          ></div>
+        </div>
+      </nav>
+      <div className="border-b border-gray-200 mb-2">
+        <nav>
+          <div
+            className="hidden justify-center items-center w-full lg:flex lg:w-auto lg:order-1"
+            id="mobile-menu-2"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row  lg:mt-0">
               <NavigationLink text="Discount" />
@@ -68,8 +77,8 @@ const Header = () => {
               <NavigationLink text="Shoes" />
             </ul>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 };

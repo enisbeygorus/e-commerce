@@ -5,6 +5,7 @@ import Footer from "../Footer";
 
 import Home from "../../screens/Home";
 import Products from "../../screens/Products";
+import ProductSingle from "../../screens/ProductSingle";
 
 const Layout = () => {
   return (
@@ -14,6 +15,7 @@ const Layout = () => {
         <Routes>
           <Route path={`/`} element={<Home />} />
           <Route path={`/products`} element={<Products />} />
+          <Route path={`/products/:name`} element={<ProductSingle />} />
         </Routes>
       </div>
       <Footer />

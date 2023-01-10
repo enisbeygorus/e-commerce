@@ -1,21 +1,22 @@
+import { Link } from "react-router-dom";
+
 const ProductImage = () => {
+  const stringToNavigate =
+    "/products/Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt"
+      .split(" ")
+      .join("-");
   return (
     <div className="productImage relative">
-      <a
-        className="detailLink detailUrl"
-        data-id="525"
-        title="Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt"
-        href="/erkek-gri-orme-yarim-fermuar-oversize-sweatshirt"
-      >
+      <Link to={stringToNavigate}>
         <div className="max-w-full rounded-md overflow-hidden">
           <img
-            className="resimOrginal owl-lazy"
+            className="resimOrginal w-full h-full owl-lazy"
             src="https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg"
             data-src="/Uploads/UrunResimleri/thumb/erkek-gri-orme-yarim-fermuar-oversize--ee4-0f.jpg"
             alt="Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt"
           />
         </div>
-      </a>
+      </Link>
       <div className="addToCard flex">
         <div
           id="product-add-to-card-hover"
