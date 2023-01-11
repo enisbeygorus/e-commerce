@@ -1,14 +1,19 @@
 interface ISection {
   children: React.ReactElement;
   widthFull?: boolean;
+  maxWidth?: string;
 }
 
-const Section = ({ children, widthFull = false }: ISection) => {
+const Section = ({
+  children,
+  widthFull = false,
+  maxWidth = "max-w-none",
+}: ISection) => {
   return (
     <section
-      className={`w-full  ${
-        widthFull ? "w-full" : "flex justify-center sm:w-11/12  mx-auto"
-      }`}
+      className={`w-full max-w  ${
+        widthFull ? "w-full" : "flex justify-center md:w-11/12  mx-auto"
+      } ${maxWidth}`}
     >
       {children}
     </section>

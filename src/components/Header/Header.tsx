@@ -1,6 +1,20 @@
 import NavigationLink from "./NavigationLink";
+import { Link } from "react-router-dom";
+import { ShoppingCartIcon } from "../../assets/Icons";
+import CartItems from "../CartUI/CartItems";
 
 const Header = () => {
+  const numberOfCartItems = 4;
+
+  const numberOfCartHandler = (value: number) => {
+    let text = "" + value;
+    if (value > 9) {
+      text = "";
+      text = "9+";
+    }
+    return text;
+  };
+
   return (
     <header>
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
@@ -19,8 +33,28 @@ const Header = () => {
             <div className="cursor-pointer text-gray-800 dark:text-white hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
               Log in
             </div>
-            <div className="cursor-pointer text-gray-800 dark:text-white hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
-              Cart
+            <div
+              id="header-cart-button-wrapper"
+              className="relative z-30 cursor-pointer text-gray-800 dark:text-white hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+            >
+              <Link to="/cart">
+                <div className="flex justify-center items-center">
+                  <div className="relative">
+                    <ShoppingCartIcon width={20} height={20} className="mr-2" />
+                  </div>
+                  <span className="mr-2 hidden sm:block">Cart</span>
+                  <span className="flex-center w-5 h-5 rounded-full text-white bg-red-500 ">
+                    {numberOfCartHandler(numberOfCartItems)}
+                  </span>
+                </div>
+              </Link>
+              <div
+                id="header-cart-items-popup"
+                style={{ width: "400px" }}
+                className="hidden absolute overflow-auto right-0 top-full w-56 h-96 bg-white border-2 rounded-md"
+              >
+                <CartItems isHeaderPopup={true} />
+              </div>
             </div>
             <button
               data-collapse-toggle="mobile-menu-2"
@@ -62,7 +96,7 @@ const Header = () => {
           ></div>
         </div>
       </nav>
-      <div className="border-b border-gray-200 mb-2">
+      <div className="border-b border-gray-200 mb-4 pb-2">
         <nav>
           <div
             className="hidden justify-center items-center w-full lg:flex lg:w-auto lg:order-1"

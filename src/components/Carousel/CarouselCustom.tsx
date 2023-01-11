@@ -1,7 +1,7 @@
 // import { productData, responsive } from "./data";
 import { responsive } from "./data";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+// import Carousel from "react-multi-carousel";
+// import "react-multi-carousel/lib/styles.css";
 import Product from "../Product/Product";
 import CarouselItemWrapper from "./CarouselItemWrapper";
 import CarouselWrapper from "./CarouselWrapper";
@@ -93,7 +93,7 @@ const CarouselCustom = () => {
 
   return (
     <CarouselWrapper>
-      <Carousel responsive={responsive}>{product}</Carousel>
+      {/* <Carousel responsive={responsive}>{product}</Carousel> */}
       {/* <Slider {...settings}>
         <div>
           <h3>1</h3>

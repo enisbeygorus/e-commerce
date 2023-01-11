@@ -17,7 +17,10 @@ const Banner = () => {
             <h1 className="text-4xl font-bold mb-4">Make yourself happy</h1>
             <div className="flex">
               <a href="/products">
-                <Button text="Shop Now" />
+                <Button
+                  text="Shop Now"
+                  className="bg-white hover:bg-gray-200 text-black rounded-full"
+                />
               </a>
             </div>
           </div>
