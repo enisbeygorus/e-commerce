@@ -9,12 +9,6 @@
   transform: translate(-50%, -50%);
 }
 
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 ::-webkit-scrollbar {
   width: 8px;
   height: 10px;

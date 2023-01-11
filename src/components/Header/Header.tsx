@@ -43,7 +43,7 @@ const Header = () => {
                     <ShoppingCartIcon width={20} height={20} className="mr-2" />
                   </div>
                   <span className="mr-2 hidden sm:block">Cart</span>
-                  <span className="flex-center w-5 h-5 rounded-full text-white bg-red-500 ">
+                  <span className="flex justify-center items-center w-5 h-5 rounded-full text-white bg-red-500 ">
                     {numberOfCartHandler(numberOfCartItems)}
                   </span>
                 </div>

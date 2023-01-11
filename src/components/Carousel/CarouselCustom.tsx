@@ -78,9 +78,7 @@ const CarouselCustom = () => {
   ];
 
   const product = productData.map((item, i) => (
-    <CarouselItemWrapper key={i}>
-      <Product />
-    </CarouselItemWrapper>
+    <CarouselItemWrapper key={i}>{/* <Product /> */}</CarouselItemWrapper>
   ));
 
   const settings = {

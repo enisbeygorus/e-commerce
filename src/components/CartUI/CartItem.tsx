@@ -40,7 +40,7 @@ const CartItem = ({ item, isHeaderPopup }: ICartItem) => {
           </div>
           <div className="flex flex-1 justify-between md:justify-around">
             {!isHeaderPopup ? (
-              <div className="flex-center">
+              <div className="flex justify-center items-center">
                 <select className="w-24 outline-none text-center border">
                   <option>1</option>
                   <option>2</option>
@@ -48,10 +48,10 @@ const CartItem = ({ item, isHeaderPopup }: ICartItem) => {
                 </select>
               </div>
             ) : null}
-            <div className="flex-center">
+            <div className="flex justify-center items-center">
               {item.price} {item.currency}
             </div>
-            <div className="flex-center">
+            <div className="flex justify-center items-center">
               <div className="flex justify-center items-center cursor-pointer">
                 <TrashCanIcon width={20} height={20} />
               </div>

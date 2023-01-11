@@ -4,15 +4,19 @@ import ProductIcon from "./ProductIcon";
 import { isMobile } from "../../utils";
 import "./Product.css";
 
-const Product = () => {
+interface IProduct {
+  imageUrl: string;
+}
+
+const Product = ({ imageUrl }: IProduct) => {
   return (
-    <div className="productItem relative">
+    <div className="productItem relative flex flex-col">
       <a className="itemCategory hidden" href="/sweatshirt-8" title="">
         <div className="itemCategoryLine">
           <span>SWEATSHİRT</span>
         </div>
       </a>
-      <ProductImage />
+      <ProductImage imageUrl={imageUrl} />
       <ProductDetail />
       {/* <ProductIcon /> */}
       {isMobile() ? (
