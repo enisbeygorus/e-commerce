@@ -11,7 +11,7 @@ const Section = ({
 }: ISection) => {
   return (
     <section
-      className={`w-full max-w  ${
+      className={`w-full  ${
         widthFull ? "w-full" : "flex justify-center md:w-11/12  mx-auto"
       } ${maxWidth}`}
     >

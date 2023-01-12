@@ -16,7 +16,7 @@ const Cart = () => {
             <div className="w-full md:w-3/4">
               <CartItems isHeaderPopup={false} />
             </div>
-            <div className="w-full md:w-1/4 pl-2  min-w-[250px]">
+            <div className="w-full md:w-1/4 md:pl-2  min-w-[250px]">
               <CartDetail />
             </div>
           </div>

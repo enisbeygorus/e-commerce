@@ -2,7 +2,7 @@ import NavigationLink from "./NavigationLink";
 import { Link } from "react-router-dom";
 import { ShoppingCartIcon } from "../../assets/Icons";
 import CartItems from "../CartUI/CartItems";
-
+import SearchBar from "../SearchBar/SearchBar";
 const Header = () => {
   const numberOfCartItems = 4;
 
@@ -17,8 +17,8 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+      <div className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+        <div className="flex flex-wrap justify-between items-stretch mx-auto max-w-screen-xl h-full">
           <a href="/" className="flex items-center">
             {/* <img
               src=""
@@ -29,6 +29,11 @@ const Header = () => {
               eCommerce
             </span>
           </a>
+          <div className=" order-3 basis-full md:basis-0 md:order-none w-full  flex justify-end flex-1  px-2">
+            <div className="w-full md:w-auto">
+              <SearchBar />
+            </div>
+          </div>
           <div className="flex items-center lg:order-2">
             <div className="cursor-pointer text-gray-800 dark:text-white hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
               Log in
@@ -42,7 +47,7 @@ const Header = () => {
                   <div className="relative">
                     <ShoppingCartIcon width={20} height={20} className="mr-2" />
                   </div>
-                  <span className="mr-2 hidden sm:block">Cart</span>
+                  {/* <span className="mr-2 hidden sm:block">Cart</span> */}
                   <span className="flex justify-center items-center w-5 h-5 rounded-full text-white bg-red-500 ">
                     {numberOfCartHandler(numberOfCartItems)}
                   </span>
@@ -95,7 +100,7 @@ const Header = () => {
             id="mobile-menu-2"
           ></div>
         </div>
-      </nav>
+      </div>
       <div className="border-b border-gray-200 mb-4 pb-2">
         <nav>
           <div

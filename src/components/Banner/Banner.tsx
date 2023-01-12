@@ -1,5 +1,6 @@
 import Button from "../Button/Button";
 import _women_model_1 from "../../assets/images/women_model_1_transparent.png";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -16,12 +17,12 @@ const Banner = () => {
             </h1>
             <h1 className="text-4xl font-bold mb-4">Make yourself happy</h1>
             <div className="flex">
-              <a href="/products">
+              <Link to="/products">
                 <Button
                   text="Shop Now"
                   className="bg-white hover:bg-gray-200 text-black rounded-full"
                 />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="hidden lg:block max-w-[410px] w-1/3 absolute right-0 top-1/2 -translate-y-1/2 z-20">

@@ -14,8 +14,10 @@
   height: 10px;
 }
 
-#header-cart-button-wrapper:hover #header-cart-items-popup {
-  display: block;
+@media (hover: hover) {
+  #header-cart-button-wrapper:hover #header-cart-items-popup {
+    display: block;
+  }
 }
 
 /* Track */

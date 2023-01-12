@@ -8,7 +8,7 @@ const Home = () => {
       <Section widthFull={true}>
         <Banner />
       </Section>
-      <Section>
+      <Section maxWidth="max-w-[1250px]">
         <CategoryProduct />
       </Section>
     </div>
