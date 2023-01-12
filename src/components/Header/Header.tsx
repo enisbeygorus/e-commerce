@@ -110,34 +110,22 @@ const Header = () => {
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row  lg:mt-0">
               <li>
-                <NavigationLink
-                  id="0"
-                  text="Discount"
-                  value="/category/discount"
-                />
+                <NavigationLink id="0" text="Discount" value="/discount" />
               </li>
               <li>
-                <NavigationLink
-                  id="1"
-                  text="New Season"
-                  value="/category/new-season"
-                />
+                <NavigationLink id="1" text="New Season" value="/new-season" />
               </li>
               <li>
-                <NavigationLink id="2" text="Man" value="/category/man" />
+                <NavigationLink id="2" text="Man" value="/man" />
               </li>
               <li>
-                <NavigationLink id="3" text="Woman" value="/category/woman" />
+                <NavigationLink id="3" text="Woman" value="/woman" />
               </li>
               <li>
-                <NavigationLink
-                  id="4"
-                  text="Sweatshirt"
-                  value="/category/sweatshirt"
-                />
+                <NavigationLink id="4" text="Sweatshirt" value="/sweatshirt" />
               </li>
               <li>
-                <NavigationLink id="5" text="Shoes" value="/category/shoes" />
+                <NavigationLink id="5" text="Shoes" value="/shoes" />
               </li>
             </ul>
           </div>

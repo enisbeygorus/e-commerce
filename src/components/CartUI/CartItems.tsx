@@ -15,7 +15,7 @@ const CartItems = ({ isHeaderPopup = false }: ICartItems) => {
     },
     {
       title: "Erkek Alaska Fermuar Detay Oversize Sweatshir 2",
-      color: "Kırmızı",
+      color: "Red",
       size: "S",
       price: "224,00",
       currency: "TL",

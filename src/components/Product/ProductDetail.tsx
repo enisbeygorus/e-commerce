@@ -29,7 +29,7 @@ const ProductDetail = () => {
       </div>
       <div className="productPrice flex">
         <div className="discountPrice flex flex-1">
-          <span className="text-xl font-bold">₺399,99</span>
+          <span className="text-xl font-bold text-black">₺399,99</span>
           <span className="discountKdv hidden">KDV Dahil</span>
         </div>
 

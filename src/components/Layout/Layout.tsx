@@ -13,12 +13,11 @@ const Layout = () => {
   return (
     <div>
       <Header />
-      <div>
+      <div className="text-gray-700">
         <Routes>
           <Route path={`/`} element={<Home />} />
-          <Route path={`/products`} element={<Products />} />
+          <Route path={`/:name`} element={<Products />} />
           <Route path={`/cart`} element={<Cart />} />
-          <Route path={`/category/:categoryName`} element={<Category />} />
           <Route path={`/products/:productName`} element={<ProductSingle />} />
         </Routes>
       </div>

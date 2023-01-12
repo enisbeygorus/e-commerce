@@ -26,7 +26,7 @@ const ProductSingle = () => {
     <div>
       <Section maxWidth="max-w-[1250px]">
         <div className="md:flex w-full">
-          <div className="flex flex-1 md:w-1/2">
+          <div className="flex flex-1 md:w-1/2 justify-center">
             <ProductImages />
           </div>
           <div className="flex-1 px-4 md:pl-4 md:w-1/2">
