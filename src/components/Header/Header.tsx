@@ -29,7 +29,7 @@ const Header = () => {
               eCommerce
             </span>
           </a>
-          <div className=" order-3 basis-full md:basis-0 md:order-none w-full  flex justify-end flex-1  px-2">
+          <div className=" order-3 mt-4 basis-full md:mt-0 md:basis-0 md:order-none w-full  flex justify-end flex-1  px-2">
             <div className="w-full md:w-auto">
               <SearchBar />
             </div>
@@ -55,16 +55,18 @@ const Header = () => {
               </Link>
               <div
                 id="header-cart-items-popup"
-                style={{ width: "400px" }}
-                className="hidden absolute overflow-auto right-0 top-full w-56 h-96 bg-white border-2 rounded-md"
+                style={{ width: "500px" }}
+                className="hidden absolute right-0 top-full w-56 bg-white pt-2 rounded-md"
               >
-                <CartItems isHeaderPopup={true} />
+                <div className="border-2 rounded-md h-full max-h-[24rem] overflow-auto">
+                  <CartItems isHeaderPopup={true} />
+                </div>
               </div>
             </div>
             <button
               data-collapse-toggle="mobile-menu-2"
               type="button"
-              className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none  dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               aria-controls="mobile-menu-2"
               aria-expanded="false"
             >

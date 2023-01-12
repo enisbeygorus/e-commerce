@@ -15,7 +15,11 @@ interface ICartItem {
 const CartItem = ({ item, isHeaderPopup }: ICartItem) => {
   return (
     <li className="mb-4">
-      <div className={`flex border p-2 rounded text-gray-700 lg:p-4`}>
+      <div
+        className={`flex border p-2 rounded text-gray-700 lg:p-4 ${
+          isHeaderPopup ? "border-x-0" : ""
+        }`}
+      >
         <input className="mr-4 w-" type={"checkbox"} />
         <div className="h-20 aspect-auto mr-4">
           <img
@@ -27,7 +31,7 @@ const CartItem = ({ item, isHeaderPopup }: ICartItem) => {
         <div className="w-full md:flex">
           <div className="w-full md:w-5/12 text-left ">
             <Link to="/products/Erkek-Gri-Örme-Yarım-Fermuar-Oversize-Sweatshirt">
-              <div>{item.title}</div>
+              <div className={`${isHeaderPopup}`}>{item.title}</div>
             </Link>
             <div className="flex text-sm ">
               <span className="mr-2">Color:</span>
