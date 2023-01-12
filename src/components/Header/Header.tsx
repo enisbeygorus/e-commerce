@@ -64,7 +64,6 @@ const Header = () => {
               </div>
             </div>
             <button
-              data-collapse-toggle="mobile-menu-2"
               type="button"
               className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none  dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               aria-controls="mobile-menu-2"
@@ -99,7 +98,7 @@ const Header = () => {
           </div>
           <div
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-            id="mobile-menu-2"
+            id="mobile-menu-1"
           ></div>
         </div>
       </div>
@@ -110,12 +109,36 @@ const Header = () => {
             id="mobile-menu-2"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row  lg:mt-0">
-              <NavigationLink text="Discount" />
-              <NavigationLink text="New Season" />
-              <NavigationLink text="Man" />
-              <NavigationLink text="Woman" />
-              <NavigationLink text="Sweatshirt" />
-              <NavigationLink text="Shoes" />
+              <li>
+                <NavigationLink
+                  id="0"
+                  text="Discount"
+                  value="/category/discount"
+                />
+              </li>
+              <li>
+                <NavigationLink
+                  id="1"
+                  text="New Season"
+                  value="/category/new-season"
+                />
+              </li>
+              <li>
+                <NavigationLink id="2" text="Man" value="/category/man" />
+              </li>
+              <li>
+                <NavigationLink id="3" text="Woman" value="/category/woman" />
+              </li>
+              <li>
+                <NavigationLink
+                  id="4"
+                  text="Sweatshirt"
+                  value="/category/sweatshirt"
+                />
+              </li>
+              <li>
+                <NavigationLink id="5" text="Shoes" value="/category/shoes" />
+              </li>
             </ul>
           </div>
         </nav>

@@ -1,0 +1,13 @@
+.skeleton-loading {
+  opacity: 0.7;
+  animation: skeleton-loading-animation 0.8s linear infinite alternate;
+}
+
+@keyframes skeleton-loading-animation {
+  0% {
+    background-color: rgb(207, 207, 207);
+  }
+  100% {
+    background-color: rgb(161, 161, 161);
+  }
+}

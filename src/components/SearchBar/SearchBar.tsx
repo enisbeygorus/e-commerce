@@ -24,7 +24,11 @@ const SearchBar = () => {
         </div>
       </div> */}
       <div className={`flex  relative `}>
+        <label className="hidden" htmlFor="search-bar">
+          Search Bar
+        </label>
         <input
+          id="search-bar"
           onChange={searchTextHandler}
           className="flex-1 text-sm text-gray-700 rounded-md bg-gray-200 border-2 outline-none py-2 pr-10 pl-4"
         />

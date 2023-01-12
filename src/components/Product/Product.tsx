@@ -2,23 +2,58 @@ import ProductImage from "./ProductImage";
 import ProductDetail from "./ProductDetail";
 import ProductIcon from "./ProductIcon";
 import { isMobile } from "../../utils";
+import SkeletonLoading from "./SkeletonLoading";
 import "./Product.css";
 
-interface IProduct {
-  imageUrl: string;
+interface IProductProperties {
+  name: string;
+  value: string;
 }
 
-const Product = ({ imageUrl }: IProduct) => {
+interface IProduct {
+  product: {
+    id: number;
+    title: string;
+    imageUrl: string;
+    price: string;
+    avaibleSizes: Array<string> | [];
+    avaibleColors: Array<string> | [];
+    categoryName: string;
+    clotheModel: string;
+    discountPrice: string | null;
+    isFavorite: boolean;
+    currency: string;
+    deliverTime: string;
+    productDescription: string;
+    productProperties?: Array<IProductProperties> | [] | null;
+  };
+}
+
+const Product = ({ product }: IProduct) => {
+  if (product === null) {
+    return <SkeletonLoading />;
+  }
+  const {
+    id,
+    avaibleColors,
+    currency,
+    categoryName,
+    clotheModel,
+    deliverTime,
+    discountPrice,
+    imageUrl,
+    isFavorite,
+    price,
+    productDescription,
+    avaibleSizes,
+    title,
+    productProperties,
+  } = product;
+
   return (
     <div className="productItem relative flex flex-col">
-      <a className="itemCategory hidden" href="/sweatshirt-8" title="">
-        <div className="itemCategoryLine">
-          <span>SWEATSHİRT</span>
-        </div>
-      </a>
       <ProductImage imageUrl={imageUrl} />
       <ProductDetail />
-      {/* <ProductIcon /> */}
       {isMobile() ? (
         <div
           id="product-add-to-card-1"

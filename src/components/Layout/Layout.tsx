@@ -7,6 +7,7 @@ import Home from "../../screens/Home";
 import Products from "../../screens/Products";
 import ProductSingle from "../../screens/ProductSingle";
 import Cart from "../../screens/Cart";
+import Category from "../../screens/Category";
 
 const Layout = () => {
   return (
@@ -17,7 +18,8 @@ const Layout = () => {
           <Route path={`/`} element={<Home />} />
           <Route path={`/products`} element={<Products />} />
           <Route path={`/cart`} element={<Cart />} />
-          <Route path={`/products/:name`} element={<ProductSingle />} />
+          <Route path={`/category/:categoryName`} element={<Category />} />
+          <Route path={`/products/:productName`} element={<ProductSingle />} />
         </Routes>
       </div>
       <Footer />

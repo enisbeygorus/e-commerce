@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 interface IProductImage {
-  imageUrl: string;
+  imageUrl?: string;
 }
 
 const ProductImage = ({ imageUrl }: IProductImage) => {
@@ -8,8 +8,12 @@ const ProductImage = ({ imageUrl }: IProductImage) => {
     "/products/Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt"
       .split(" ")
       .join("-");
+
   return (
-    <div className="flex-1 relative flex justify-center items-center  bg-gray-200">
+    <div
+      style={{ aspectRatio: "1 / 1.5" }}
+      className="flex-1 relative flex justify-center items-center rounded-md bg-gray-200"
+    >
       <Link
         className="h-full flex justify-center items-center"
         to={stringToNavigate}
