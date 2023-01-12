@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+
 interface IProductImage {
   imageUrl?: string;
+  showAddCard: boolean;
 }
 
-const ProductImage = ({ imageUrl }: IProductImage) => {
+const ProductImage = ({ imageUrl, showAddCard }: IProductImage) => {
   const stringToNavigate =
     "/products/Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt"
       .split(" ")
@@ -27,15 +29,17 @@ const ProductImage = ({ imageUrl }: IProductImage) => {
           />
         </div>
       </Link>
-      <div className="absolute bottom-0 w-full addToCard flex">
-        <div
-          id="product-add-to-card-hover"
-          title="Add To Card"
-          className="w-full font-bold text-gray-200 h-0 bg-gray-700 overflow-hidden flex justify-center items-center cursor-pointer"
-        >
-          Add To Card
+      {showAddCard ? (
+        <div className="absolute bottom-0 w-full addToCard flex">
+          <div
+            id="product-add-to-card-hover"
+            title="Add To Card"
+            className="w-full font-bold text-gray-200 h-0 bg-gray-700 overflow-hidden flex flex-col justify-center items-center cursor-pointer"
+          >
+            <div>Add To Card</div>
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 };

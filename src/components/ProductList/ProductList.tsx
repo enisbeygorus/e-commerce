@@ -15,14 +15,14 @@ const ProductList = () => {
 
   const content = products.map((product, index) => {
     return (
-      <div key={index} className="flex w-1/2 md:w-1/3 p-4">
+      <div key={index} className="flex w-1/2 md:w-1/3 p-2 sm:p-4">
         <Product product={product} />
       </div>
     );
   });
 
   return (
-    <div className="w-11/12 max-w-[1250px] m-auto">
+    <div className="w-full px-2 md:w-11/12 max-w-[1250px] m-auto">
       <div className="content flex w-full">
         <div className="hidden lg:block w-52 filter">
           <Filters />

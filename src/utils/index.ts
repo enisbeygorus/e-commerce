@@ -16,3 +16,15 @@ export const isMobile = (): boolean => {
   }
   return isMobile;
 };
+
+export const calculateDiscountPercentange = (
+  price: number,
+  newPrice: number
+) => {
+  if (price < newPrice) {
+    return 0;
+  }
+
+  const diff = price - newPrice;
+  return (diff / price) * 100;
+};

@@ -1,18 +1,28 @@
-import { HeartIcon } from "../../assets/Icons";
-const ProductDetail = () => {
+import { HeartIcon2 } from "../../assets/Icons";
+import { Link } from "react-router-dom";
+
+import { IProductDetail } from "./ProductTypes";
+
+const ProductDetail = ({
+  title,
+  price,
+  discountPrice,
+  currency,
+  discountPercentangeNumber,
+  isFavorite,
+}: IProductDetail) => {
   return (
-    <div className="productDetail mb-2" data-id="525" data-variant-id="2765">
-      <div className="productMarka hidden">SLATRA</div>
-      <div className="productName my-3 w-full" data-id="525">
-        <a
-          className="flex text-left overflow-hidden text-ellipsis text-sm h-10 w-full text-black"
+    <div className="mb-2 relative">
+      <div className="my-3 w-full">
+        <Link
+          className="flex text-left overflow-hidden text-ellipsis text-sm h-10 w-full"
           title="Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt"
-          href="/erkek-gri-orme-yarim-fermuar-oversize-sweatshirt"
+          to="/products/erkek-gri-orme-yarim-fermuar-oversize-sweatshirt"
         >
-          Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt
-        </a>
+          {title}
+        </Link>
       </div>
-      <div className="productPoints hidden">
+      <div className="hidden">
         <div className="rating" data-rating="0">
           <i className="star-1">★</i>
           <i className="star-2">★</i>
@@ -21,27 +31,30 @@ const ProductDetail = () => {
           <i className="star-5">★</i>
         </div>
       </div>
-      <div className="productStokKodu hidden">
-        <span>S1019</span>
-      </div>
-      <div className="productSatisBirimi hidden">
-        <span>ADET</span>
-      </div>
-      <div className="productPrice flex">
-        <div className="discountPrice flex flex-1">
-          <span className="text-xl font-bold text-black">₺399,99</span>
-          <span className="discountKdv hidden">KDV Dahil</span>
+      <div className="flex">
+        <div className="discountPrice text-xl font-bold flex items-center flex-1 text-black">
+          <span
+            className={`${
+              discountPercentangeNumber !== 0
+                ? "line-through text-xs text-gray-700"
+                : "text-base sm:text-xl"
+            }`}
+          >
+            {price} {currency}
+          </span>
+          {discountPercentangeNumber !== 0 ? (
+            <span className="ml-2 text-base sm:text-xl">
+              {discountPrice} {currency}
+            </span>
+          ) : null}
         </div>
 
-        <div
-          //   onclick="productFavoritesProcess('31e3c0553e1d421293c3b3e03535b94a',-1,2,525,2765,1,this)"
-          //   onload="urunfavoriKontrol(this,525)"
-          data-action="1"
-          data-favoritepopup="true"
-          className="favoriteslist cursor-pointer"
-          title="Favorilere Ekle"
-        >
-          <HeartIcon width={25} height={25} />
+        <div className="cursor-pointer" title="Favorilere Ekle">
+          {isFavorite ? (
+            <HeartIcon2 width={25} height={25} fill={"#000"} />
+          ) : (
+            <HeartIcon2 width={25} height={25} />
+          )}
         </div>
       </div>
     </div>

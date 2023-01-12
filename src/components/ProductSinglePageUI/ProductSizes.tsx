@@ -20,7 +20,9 @@ const Sizes = ({ sizeSelectHandler, sizeSelected }: ISizes) => {
             key={size.value}
             onClick={() => sizeSelectHandler(size.value)}
             className={`${
-              size.value === sizeSelected ? "border-green-400" : ""
+              size.value === sizeSelected
+                ? "border-green-400"
+                : "border-gray-500"
             } text-center border-2 rounded-md w-7 h-7 mr-2 cursor-pointer hover:border-green-400`}
           >
             {size.displayName}

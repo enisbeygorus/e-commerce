@@ -1,60 +1,45 @@
+import { useState } from "react";
 import ProductImage from "./ProductImage";
 import ProductDetail from "./ProductDetail";
-import ProductIcon from "./ProductIcon";
 import { isMobile } from "../../utils";
 import SkeletonLoading from "./SkeletonLoading";
+import { calculateDiscountPercentange } from "../../utils";
 import "./Product.css";
+import { IProductComponent } from "./ProductTypes";
 
-interface IProductProperties {
-  name: string;
-  value: string;
-}
+const Product = ({ product }: IProductComponent) => {
+  const [showAddCard] = useState<boolean>(true);
 
-interface IProduct {
-  product: {
-    id: number;
-    title: string;
-    imageUrl: string;
-    price: string;
-    avaibleSizes: Array<string> | [];
-    avaibleColors: Array<string> | [];
-    categoryName: string;
-    clotheModel: string;
-    discountPrice: string | null;
-    isFavorite: boolean;
-    currency: string;
-    deliverTime: string;
-    productDescription: string;
-    productProperties?: Array<IProductProperties> | [] | null;
-  };
-}
-
-const Product = ({ product }: IProduct) => {
   if (product === null) {
     return <SkeletonLoading />;
   }
-  const {
-    id,
-    avaibleColors,
-    currency,
-    categoryName,
-    clotheModel,
-    deliverTime,
-    discountPrice,
-    imageUrl,
-    isFavorite,
-    price,
-    productDescription,
-    avaibleSizes,
-    title,
-    productProperties,
-  } = product;
+  const { currency, discountPrice, imageUrl, isFavorite, price, title } =
+    product;
+
+  const discountPercentangeNumber = discountPrice
+    ? calculateDiscountPercentange(parseInt(price), parseInt(discountPrice))
+    : 0;
 
   return (
     <div className="productItem relative flex flex-col">
-      <ProductImage imageUrl={imageUrl} />
-      <ProductDetail />
-      {isMobile() ? (
+      {discountPercentangeNumber !== 0 ? (
+        <div className="w-10 h-10 text-base absolute top-0 right-0 rounded-tr rounded-bl z-10 sm:w-14 sm:h-14 flex justify-center items-center sm:text-2xl text-white bg-red-500">
+          {discountPercentangeNumber} %
+        </div>
+      ) : null}
+
+      <ProductImage showAddCard={showAddCard} imageUrl={imageUrl} />
+
+      <ProductDetail
+        discountPercentangeNumber={discountPercentangeNumber}
+        discountPrice={discountPrice}
+        price={price}
+        currency={currency}
+        title={title}
+        isFavorite={isFavorite}
+      />
+
+      {isMobile() && showAddCard ? (
         <div
           id="product-add-to-card-1"
           title="Add To Card"
