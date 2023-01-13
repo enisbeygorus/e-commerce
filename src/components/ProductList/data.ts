@@ -1,8 +1,8 @@
-import { IProduct } from "../Product/ProductTypes";
+import { IProduct } from "../../types/index";
 
 export const productsData: Array<IProduct> = [
   {
-    id: 0,
+    id: "0",
     title: "Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt",
     imageUrl:
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
@@ -11,7 +11,7 @@ export const productsData: Array<IProduct> = [
     avaibleColors: ["black", "red"],
     categoryName: "üst giyim",
     clotheModel: "gömlek",
-    discountPrice: "195.50",
+    discountPrice: "195.5",
     isFavorite: true,
     currency: "TL",
     deliverTime: "2 Gün",
@@ -20,7 +20,7 @@ export const productsData: Array<IProduct> = [
     stock: 0,
   },
   {
-    id: 1,
+    id: "1",
     title: "Unisex Mavi W ÇıtÇıtlı Oversize Peluş Ceket",
     imageUrl:
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/unisex-mavi-w-citcitli-oversize-pelus--78-f04.jpg",
@@ -29,7 +29,7 @@ export const productsData: Array<IProduct> = [
     avaibleColors: ["black"],
     categoryName: "üst giyim",
     clotheModel: "sweatshirt",
-    discountPrice: "",
+    discountPrice: "0",
     isFavorite: false,
     currency: "TL",
     deliverTime: "2 Gün",
@@ -38,7 +38,7 @@ export const productsData: Array<IProduct> = [
     stock: 3,
   },
   {
-    id: 2,
+    id: "2",
     title: "Unisex Siyah W ÇıtÇıtlı Oversize Peluş Ceket",
     imageUrl:
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/unisex-siyah-w-citcitli-oversize-pelus-dcf114.jpg",
@@ -47,7 +47,7 @@ export const productsData: Array<IProduct> = [
     avaibleColors: ["black"],
     categoryName: "üst giyim",
     clotheModel: "sweatshirt",
-    discountPrice: "",
+    discountPrice: "0",
     isFavorite: false,
     currency: "TL",
     deliverTime: "2 Gün",
@@ -56,7 +56,7 @@ export const productsData: Array<IProduct> = [
     stock: 10,
   },
   {
-    id: 3,
+    id: "3",
     title: "Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt",
     imageUrl:
       "https://st2.myideasoft.com/idea/jq/35/myassets/products/076/8508228a-08b0-4f95-a124-05ed5e80e721.jpg?revision=1645306292",
@@ -65,7 +65,7 @@ export const productsData: Array<IProduct> = [
     avaibleColors: ["black"],
     categoryName: "üst giyim",
     clotheModel: "sweatshirt",
-    discountPrice: "",
+    discountPrice: "0",
     isFavorite: false,
     currency: "TL",
     deliverTime: "2 Gün",

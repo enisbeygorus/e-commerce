@@ -1,7 +1,6 @@
 import { HeartIcon2 } from "../../assets/Icons";
 import { Link } from "react-router-dom";
-
-import { IProductDetail } from "./ProductTypes";
+import { IProductDetail } from "../../types";
 
 const ProductDetail = ({
   title,

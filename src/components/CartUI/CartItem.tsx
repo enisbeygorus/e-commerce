@@ -1,18 +1,13 @@
 import { Link } from "react-router-dom";
 import { TrashCanIcon } from "../../assets/Icons";
+import { ICartItem } from "../../types";
 
-interface ICartItem {
+interface ICartItemComp {
   isHeaderPopup: boolean;
-  item: {
-    title: string;
-    color: string;
-    size: string;
-    price: string;
-    currency: string;
-  };
+  item: ICartItem;
 }
 
-const CartItem = ({ item, isHeaderPopup }: ICartItem) => {
+const CartItem = ({ item, isHeaderPopup }: ICartItemComp) => {
   return (
     <li className="mb-4">
       <div

@@ -5,7 +5,11 @@ import { isMobile } from "../../utils";
 import SkeletonLoading from "./SkeletonLoading";
 import { calculateDiscountPercentange } from "../../utils";
 import "./Product.css";
-import { IProductComponent } from "./ProductTypes";
+import { IProduct } from "../../types";
+
+export interface IProductComponent {
+  product: IProduct;
+}
 
 const Product = ({ product }: IProductComponent) => {
   const [showAddCard] = useState<boolean>(true);
