@@ -4,7 +4,7 @@ import { ShoppingCartIcon } from "../../assets/Icons";
 import CartItems from "../CartUI/CartItems";
 import SearchBar from "../SearchBar/SearchBar";
 const Header = () => {
-  const numberOfCartItems = 4;
+  const numberOfCartItems = 0;
 
   const numberOfCartHandler = (value: number) => {
     let text = "" + value;
@@ -48,15 +48,17 @@ const Header = () => {
                     <ShoppingCartIcon width={20} height={20} className="mr-2" />
                   </div>
                   {/* <span className="mr-2 hidden sm:block">Cart</span> */}
-                  <span className="flex justify-center items-center w-5 h-5 rounded-full text-white bg-red-500 ">
-                    {numberOfCartHandler(numberOfCartItems)}
-                  </span>
+                  {numberOfCartItems !== 0 ? (
+                    <span className="flex justify-center items-center w-5 h-5 rounded-full text-white bg-red-500 ">
+                      {numberOfCartHandler(numberOfCartItems)}
+                    </span>
+                  ) : null}
                 </div>
               </Link>
               <div
                 id="header-cart-items-popup"
-                style={{ width: "500px" }}
-                className="hidden absolute right-0 top-full w-56 bg-white pt-2 rounded-md"
+                // style={{ width: "500px" }}
+                className="hidden absolute right-0 top-full bg-white pt-2 rounded-md"
               >
                 <div className="border-2 rounded-md h-full max-h-[24rem] overflow-auto">
                   <CartItems isHeaderPopup={true} />

@@ -11,9 +11,9 @@ import Category from "../../screens/Category";
 
 const Layout = () => {
   return (
-    <div>
+    <div className="text-gray-700">
       <Header />
-      <div className="text-gray-700">
+      <div>
         <Routes>
           <Route path={`/`} element={<Home />} />
           <Route path={`/:name`} element={<Products />} />

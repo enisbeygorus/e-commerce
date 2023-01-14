@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ICartItem } from "../../types";
 import { ICartState } from "../../types";
 
-const initialCartItems = [
+const initialCartItems: Array<ICartItem> = [
   {
     id: "1",
     title: "Erkek Alaska Fermuar Detay Oversize Sweatshir",
