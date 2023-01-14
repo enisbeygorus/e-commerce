@@ -1,5 +1,5 @@
 import "./SkeletonStyle.css";
-const BackboneLoading = () => {
+const SkeletonLoading = () => {
   return (
     <div className="w-full relative flex flex-col overflow-hidden">
       <div
@@ -15,4 +15,4 @@ const BackboneLoading = () => {
   );
 };
 
-export default BackboneLoading;
+export default SkeletonLoading;

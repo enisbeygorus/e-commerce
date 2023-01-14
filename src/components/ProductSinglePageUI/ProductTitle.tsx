@@ -1,7 +1,11 @@
-const ProductTitle = () => {
+import { IProduct } from "../../types";
+
+type IProductTitle = Pick<IProduct, "title">;
+
+const ProductTitle = ({ title }: IProductTitle) => {
   return (
     <div className=" text-left text-lg text-gray-700 font-bold mb-2">
-      Erkek Yeni Sezon Beyaz Çiçek Desenli Kısa Kollu %100 Viskon Gömlek
+      {title}
     </div>
   );
 };

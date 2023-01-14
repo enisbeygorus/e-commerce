@@ -19,11 +19,12 @@ export const filtersData: Array<IFiltersData> = [
     name: "size",
     displayName: "Size",
     data: [
-      { id: 0, displayName: "S", value: "s" },
-      { id: 1, displayName: "M", value: "m" },
-      { id: 2, displayName: "L", value: "l" },
-      { id: 3, displayName: "XL", value: "xl" },
-      { id: 4, displayName: "XLL", value: "xll" },
+      { id: 0, displayName: "XS", value: "xs" },
+      { id: 1, displayName: "S", value: "s" },
+      { id: 2, displayName: "M", value: "m" },
+      { id: 3, displayName: "L", value: "l" },
+      { id: 4, displayName: "XL", value: "xl" },
+      { id: 5, displayName: "XLL", value: "xll" },
     ],
   },
   {

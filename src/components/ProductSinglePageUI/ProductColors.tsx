@@ -1,42 +1,19 @@
 import { useState } from "react";
+import { IAvailableColors } from "../../types";
 
-const ProductColors = () => {
-  const [selectedColorId, setSelectedColorId] = useState(0);
+interface IProductColors {
+  availableColors: Array<IAvailableColors>;
+}
 
-  const selectColorHandler = (id: number) => {
-    if (id === undefined) return;
+const ProductColors = ({ availableColors }: IProductColors) => {
+  const [selectedColorId, setSelectedColorId] = useState<string>("0");
+
+  const selectColorHandler = (id: string) => {
+    if (id === "") return;
     setSelectedColorId(id);
   };
 
-  const colorsData = [
-    {
-      id: 0,
-      imageUrl:
-        "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
-    },
-    {
-      id: 1,
-      imageUrl:
-        "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-seritli-orme-yarim-fermuar-overs-df3bfd.jpg",
-    },
-    {
-      id: 2,
-      imageUrl:
-        "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
-    },
-    {
-      id: 3,
-      imageUrl:
-        "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-seritli-orme-yarim-fermuar-overs-df3bfd.jpg",
-    },
-    {
-      id: 4,
-      imageUrl:
-        "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
-    },
-  ];
-
-  const colorsList = colorsData.map((colorData, index) => {
+  const colorsList = availableColors.map((colorData, index) => {
     return (
       <li className="mr-4  overflow-hidden cursor-pointer" key={index}>
         <div

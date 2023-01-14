@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
+import { IProduct } from "../../types";
 
-interface IProductImage {
-  imageUrl?: string;
+export type IProductImage = Pick<IProduct, "imageUrls"> & {
   showAddCard: boolean;
-}
+};
 
-const ProductImage = ({ imageUrl, showAddCard }: IProductImage) => {
+const ProductImage = ({ imageUrls, showAddCard }: IProductImage) => {
   const stringToNavigate =
     "/products/Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt"
       .split(" ")
@@ -22,8 +22,8 @@ const ProductImage = ({ imageUrl, showAddCard }: IProductImage) => {
       >
         <div className="max-w-full rounded-md overflow-hidden">
           <img
-            className="resimOrginal w-full h-full owl-lazy"
-            src={imageUrl}
+            className="resimOrginal w-full h-auto owl-lazy"
+            src={imageUrls[0]}
             data-src="/Uploads/UrunResimleri/thumb/erkek-gri-orme-yarim-fermuar-oversize--ee4-0f.jpg"
             alt="Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt"
           />

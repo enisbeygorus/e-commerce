@@ -3,13 +3,26 @@ interface IProductProperties {
   value: string;
 }
 
+export interface IAvailableColors {
+  id: string;
+  productId: string;
+  colorName: string;
+  productUrl: string;
+  imageUrl: string;
+}
+
+export interface ISizes {
+  allProductSizes: Array<string>;
+  availableSizes: Array<string>;
+}
+
 export interface IProduct {
   id: string;
   title: string;
-  imageUrl: string;
+  imageUrls: Array<string>;
   price: string;
-  avaibleSizes: Array<string>;
-  avaibleColors: Array<string>;
+  sizes: ISizes;
+  availableColors: Array<IAvailableColors>;
   categoryName: string;
   clotheModel: string;
   discountPrice: string;

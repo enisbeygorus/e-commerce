@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import Product from "../Product/Product";
 import Filters from "../Filters/Filters";
 import Sort from "../Sort/Sort";
-import { productsData } from "./data";
-
+import { productsData } from "../../database";
 const ProductList = () => {
   const [products, setProducts] = useState(new Array(6).fill(null));
 

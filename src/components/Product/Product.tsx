@@ -2,7 +2,7 @@ import { useState } from "react";
 import ProductImage from "./ProductImage";
 import ProductDetail from "./ProductDetail";
 import { isMobile } from "../../utils";
-import SkeletonLoading from "./SkeletonLoading";
+import { SkeletonLoading } from "../Loading";
 import { calculateDiscountPercentange } from "../../utils";
 import "./Product.css";
 import { IProduct } from "../../types";
@@ -17,12 +17,13 @@ const Product = ({ product }: IProductComponent) => {
   if (product === null) {
     return <SkeletonLoading />;
   }
-  const { currency, discountPrice, imageUrl, isFavorite, price, title } =
+  const { currency, discountPrice, imageUrls, isFavorite, price, title } =
     product;
 
-  const discountPercentangeNumber = discountPrice
-    ? calculateDiscountPercentange(parseInt(price), parseInt(discountPrice))
-    : 0;
+  const discountPercentangeNumber =
+    parseInt(discountPrice) !== 0
+      ? calculateDiscountPercentange(parseInt(price), parseInt(discountPrice))
+      : 0;
 
   return (
     <div className="productItem relative flex flex-col">
@@ -32,7 +33,7 @@ const Product = ({ product }: IProductComponent) => {
         </div>
       ) : null}
 
-      <ProductImage showAddCard={showAddCard} imageUrl={imageUrl} />
+      <ProductImage showAddCard={showAddCard} imageUrls={imageUrls} />
 
       <ProductDetail
         discountPercentangeNumber={discountPercentangeNumber}
