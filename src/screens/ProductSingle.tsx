@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import Section from "../components/Section/Section";
 import Price from "../components/ProductSinglePageUI/Price";
-import ProductStarts from "../components/ProductSinglePageUI/ProductStarts";
+// import ProductStarts from "../components/ProductSinglePageUI/ProductStarts";
 import ProductSizes from "../components/ProductSinglePageUI/ProductSizes";
 import ProductCount from "../components/ProductSinglePageUI/ProductCount";
 import ProductTitle from "../components/ProductSinglePageUI/ProductTitle";
@@ -10,13 +12,14 @@ import ProductImages from "../components/ProductSinglePageUI/ProductImages";
 import { HeartIcon2 } from "../assets/Icons";
 import Button from "../components/Button/Button";
 
-import { productData, productDataInitial } from "../database";
+import { productData, productDataInitial, productsData } from "../database";
 import { IProduct } from "../types";
 
 const ProductSingle = () => {
   const [sizeSelected, setSelectedSize] = useState<string>("");
   const [itemCount, setItemCount] = useState<number>(1);
   const [product, setProduct] = useState<IProduct>(productDataInitial);
+  const { productName } = useParams();
 
   const {
     title,
@@ -31,9 +34,15 @@ const ProductSingle = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setProduct(productData);
+      const newProduct = productsData.find(
+        (product) => product.productUrl === productName
+      );
+
+      console.log("newProductnewProduct:", newProduct);
+      setProduct(newProduct ? newProduct : productDataInitial);
+      // setProduct(productData);
     }, 1500);
-  }, []);
+  }, [productName]);
 
   const sizeSelectHandler = (value: string) => {
     setSelectedSize(value);

@@ -16,14 +16,23 @@ const Price = ({ price, currency, discountPrice }: IPrice) => {
           %{discountPercentangeNumber}
         </span>
       ) : null}
-      <span className="line-through mx-1">
-        {price}
-        {currency}
-      </span>
-      <span className="text-2xl font-bold mx-1">
-        {discountPrice}
-        {currency}
-      </span>
+      {discountPercentangeNumber !== 0 ? (
+        <>
+          <span className="line-through mx-1">
+            {price}
+            {currency}
+          </span>
+          <span className="text-2xl font-bold mx-1">
+            {discountPrice}
+            {currency}
+          </span>
+        </>
+      ) : (
+        <span className="text-2xl font-bold mx-1">
+          {price}
+          {currency}
+        </span>
+      )}
     </div>
   );
 };

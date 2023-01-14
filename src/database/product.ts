@@ -5,6 +5,7 @@ export const productDataInitial: IProduct = {
   title: "",
   imageUrls: [""],
   price: "",
+  productUrl: "",
   sizes: { allProductSizes: [""], availableSizes: [""] },
   availableColors: [
     { id: "", productId: "123", colorName: "", productUrl: "", imageUrl: "" },
@@ -26,6 +27,7 @@ export const productData: IProduct = {
   imageUrls: [
     "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
   ],
+  productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
   price: "250,55",
   sizes: { allProductSizes: ["s", "m", "l", "xl"], availableSizes: ["m", "l"] },
   availableColors: [
@@ -33,7 +35,7 @@ export const productData: IProduct = {
       id: "0",
       colorName: "black",
       productId: "123",
-      productUrl: "Erkek-Gri-Örme-Yarım-Fermuar-Oversize-Sweatshirt",
+      productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
       imageUrl:
         "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
     },
@@ -65,6 +67,7 @@ export const productsData: Array<IProduct> = [
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
     ],
     price: "250,55",
+    productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
     sizes: {
       allProductSizes: ["s", "m", "l", "xl"],
       availableSizes: ["m", "l"],
@@ -74,7 +77,7 @@ export const productsData: Array<IProduct> = [
         id: "0",
         productId: "123",
         colorName: "black",
-        productUrl: "Erkek-Gri-Örme-Yarım-Fermuar-Oversize-Sweatshirt",
+        productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
         imageUrl:
           "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
       },
@@ -95,6 +98,7 @@ export const productsData: Array<IProduct> = [
     imageUrls: [
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/unisex-mavi-w-citcitli-oversize-pelus--78-f04.jpg",
     ],
+    productUrl: "unisex-mavi-w-citcitli-oversize-pelus-ceket",
     price: "250,55",
     sizes: {
       allProductSizes: ["s", "m", "l", "xl"],
@@ -128,6 +132,7 @@ export const productsData: Array<IProduct> = [
     ],
 
     price: "250,55",
+    productUrl: "unisex-beyaz-w-citcitli-oversize-pelus-ceket",
     sizes: {
       allProductSizes: ["s", "m", "l", "xl"],
       availableSizes: ["m", "l"],
@@ -137,7 +142,7 @@ export const productsData: Array<IProduct> = [
         id: "0",
         productId: "123",
         colorName: "black",
-        productUrl: "Erkek-Gri-Örme-Yarım-Fermuar-Oversize-Sweatshirt",
+        productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
         imageUrl:
           "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
       },
@@ -159,20 +164,12 @@ export const productsData: Array<IProduct> = [
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/unisex-siyah-w-citcitli-oversize-pelus-dcf114.jpg",
     ],
     price: "250,55",
+    productUrl: "unisex-siyah-w-citcitli-oversize-pelus-ceket",
     sizes: {
       allProductSizes: ["s", "m", "l", "xl"],
       availableSizes: ["m", "l"],
     },
-    availableColors: [
-      {
-        id: "0",
-        productId: "123",
-        colorName: "black",
-        productUrl: "Erkek-Gri-Örme-Yarım-Fermuar-Oversize-Sweatshirt",
-        imageUrl:
-          "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
-      },
-    ],
+    availableColors: [],
     categoryName: "üst giyim",
     clotheModel: "sweatshirt",
     discountPrice: "0",

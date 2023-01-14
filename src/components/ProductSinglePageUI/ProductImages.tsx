@@ -14,7 +14,7 @@ const ProductImages = ({ imageUrls }: IProductImages) => {
           />
         </div>
       </div>
-      <div className="flex justify-center items-center flex-1 px-4 sm:px-0">
+      <div className="flex justify-center items-center flex-1 px-4 sm:px-0 sm:py-4">
         <div className="">
           <img
             alt="product_image_show"

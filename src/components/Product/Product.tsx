@@ -17,8 +17,15 @@ const Product = ({ product }: IProductComponent) => {
   if (product === null) {
     return <SkeletonLoading />;
   }
-  const { currency, discountPrice, imageUrls, isFavorite, price, title } =
-    product;
+  const {
+    currency,
+    discountPrice,
+    imageUrls,
+    isFavorite,
+    price,
+    title,
+    productUrl,
+  } = product;
 
   const discountPercentangeNumber =
     parseInt(discountPrice) !== 0
@@ -33,7 +40,11 @@ const Product = ({ product }: IProductComponent) => {
         </div>
       ) : null}
 
-      <ProductImage showAddCard={showAddCard} imageUrls={imageUrls} />
+      <ProductImage
+        productUrl={productUrl}
+        showAddCard={showAddCard}
+        imageUrls={imageUrls}
+      />
 
       <ProductDetail
         discountPercentangeNumber={discountPercentangeNumber}

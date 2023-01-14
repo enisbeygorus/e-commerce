@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import { IProduct } from "../../types";
 
-export type IProductImage = Pick<IProduct, "imageUrls"> & {
+export type IProductImage = Pick<IProduct, "imageUrls" | "productUrl"> & {
   showAddCard: boolean;
 };
 
-const ProductImage = ({ imageUrls, showAddCard }: IProductImage) => {
-  const stringToNavigate =
-    "/products/Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt"
-      .split(" ")
-      .join("-");
+const ProductImage = ({
+  productUrl,
+  imageUrls,
+  showAddCard,
+}: IProductImage) => {
+  const stringToNavigate = `/products/${productUrl}`;
 
   return (
     <div

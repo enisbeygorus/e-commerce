@@ -18,6 +18,7 @@ export interface ISizes {
 
 export interface IProduct {
   id: string;
+  productUrl: string;
   title: string;
   imageUrls: Array<string>;
   price: string;

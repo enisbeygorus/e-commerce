@@ -8,6 +8,9 @@ interface IProductColors {
 const ProductColors = ({ availableColors }: IProductColors) => {
   const [selectedColorId, setSelectedColorId] = useState<string>("0");
 
+  if (availableColors.length === 0) {
+    return null;
+  }
   const selectColorHandler = (id: string) => {
     if (id === "") return;
     setSelectedColorId(id);
