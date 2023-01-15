@@ -15,6 +15,7 @@ import ProductImages from "../components/ProductSinglePageUI/ProductImages";
 import { HeartIcon2 } from "../assets/Icons";
 import Button from "../components/Button/Button";
 import { SpinningLoading } from "../components/Loading";
+import { ModalAddedCart } from "../components/Modal";
 
 import { productDataInitial, productsData } from "../database";
 import { IProduct, IProductColor, ICartItem } from "../types";
@@ -143,6 +144,7 @@ const ProductSingle = () => {
           </div>
         </div>
       </Section>
+      <ModalAddedCart isModalOpen={true} />
     </div>
   );
 };
