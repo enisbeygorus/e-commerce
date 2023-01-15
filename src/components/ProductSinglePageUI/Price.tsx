@@ -12,7 +12,7 @@ const Price = ({ price, currency, discountPrice }: IPrice) => {
   return (
     <div className="flex items-center my-4">
       {discountPercentangeNumber !== 0 ? (
-        <span className="bg-green-500 rounded-full px-2 py-1 text-white font-bold mx-1">
+        <span className="bg-green-700 rounded-full px-2 py-1 text-white font-bold mx-1">
           %{discountPercentangeNumber}
         </span>
       ) : null}

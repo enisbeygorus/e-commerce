@@ -21,12 +21,12 @@ const ProductColors = ({
 
   const colorsList = availableColors.map((colorData, index) => {
     return (
-      <li className="mr-4  overflow-hidden cursor-pointer" key={index}>
+      <li className="mr-4 overflow-hidden cursor-pointer" key={index}>
         <div
           onClick={() => selectColorHandler(colorData.id)}
           className={`${
             colorData.id === colorSelected
-              ? "border-green-400"
+              ? "border-green-700"
               : "border-transparent"
           } w-20 aspect-auto p-1 border-4 rounded-md`}
         >

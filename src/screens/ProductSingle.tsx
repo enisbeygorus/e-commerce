@@ -16,7 +16,7 @@ import { HeartIcon2 } from "../assets/Icons";
 import Button from "../components/Button/Button";
 import { SpinningLoading } from "../components/Loading";
 
-import { productData, productDataInitial, productsData } from "../database";
+import { productDataInitial, productsData } from "../database";
 import { IProduct, IProductColor, ICartItem } from "../types";
 
 const ProductSingle = () => {
@@ -62,7 +62,6 @@ const ProductSingle = () => {
       setTimeout(() => {
         setLoading(false);
       }, 1000);
-      console.log("Sepetiniz Güncellenmiştir: ", amount);
     }
   }, [amount]);
 
@@ -130,7 +129,7 @@ const ProductSingle = () => {
                 <Button
                   onClick={addToCartHandler}
                   text="Add to cart"
-                  className="bg-green-500 hover:bg-green-700 text-white w-full rounded-md"
+                  className="bg-green-700 hover:bg-green-500 text-white w-full rounded-md"
                 />
               )}
               <div className="flex justify-center items-center ml-2">

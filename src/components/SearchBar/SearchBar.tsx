@@ -2,7 +2,7 @@ import { useState } from "react";
 import { SearchIcon } from "../../assets/Icons";
 
 const SearchBar = () => {
-  const [searchText, setSearchText] = useState<string>("");
+  const [, setSearchText] = useState<string>("");
 
   const searchTextHandler = (e: React.FormEvent<HTMLInputElement>) => {
     setSearchText(e.currentTarget.value);
@@ -23,9 +23,7 @@ const SearchBar = () => {
         </div>
       </div> */}
       <div className={`flex  relative `}>
-        <label className="hidden" htmlFor="search-bar">
-          Search Bar
-        </label>
+        <label className="opacity-0" htmlFor="search-bar"></label>
         <input
           id="search-bar"
           onChange={searchTextHandler}
