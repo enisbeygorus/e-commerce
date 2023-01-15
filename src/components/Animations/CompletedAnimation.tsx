@@ -1,3 +1,4 @@
+import "./completed.css";
 const CompletedAnimation = () => {
   return (
     <div className="success-checkmark">

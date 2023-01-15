@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addItem } from "../store/reducers/cart";
-import { ACTION_SELECTORS } from "../store/actionSelectors";
 
 import Section from "../components/Section/Section";
 import Price from "../components/ProductSinglePageUI/Price";
@@ -27,11 +26,10 @@ const ProductSingle = () => {
     productDataInitial.availableColors[0].id
   );
   const [loading, setLoading] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [product, setProduct] = useState<IProduct>(productDataInitial);
   const { productName } = useParams();
   const dispatch = useDispatch();
-
-  const { amount } = useSelector(ACTION_SELECTORS.getCart);
 
   const {
     id,
@@ -43,9 +41,11 @@ const ProductSingle = () => {
     availableColors,
     currency,
     imageUrls,
+    productUrl,
   } = product;
 
   useEffect(() => {
+    // api call
     setTimeout(() => {
       const foundProduct = productsData.find(
         (product) => product.productUrl === productName
@@ -57,14 +57,6 @@ const ProductSingle = () => {
       setColorSelected(newProduct.availableColors[0].id);
     }, 1500);
   }, [productName]);
-
-  useEffect(() => {
-    if (amount > 0) {
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    }
-  }, [amount]);
 
   const sizeSelectHandler = (value: string) => {
     setSelectedSize(value);
@@ -84,9 +76,20 @@ const ProductSingle = () => {
       price,
       size: sizeSelected,
       title,
+      productUrl,
     };
     setLoading(true);
-    dispatch(addItem(newCart));
+
+    // api call for product
+    setTimeout(() => {
+      setLoading(false);
+      setShowModal(true);
+      dispatch(addItem(newCart));
+    }, 1000);
+
+    setTimeout(() => {
+      setShowModal(false);
+    }, 3000);
   };
 
   return (
@@ -144,7 +147,7 @@ const ProductSingle = () => {
           </div>
         </div>
       </Section>
-      <ModalAddedCart isModalOpen={true} />
+      <ModalAddedCart isModalOpen={showModal} />
     </div>
   );
 };

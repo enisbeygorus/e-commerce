@@ -46,5 +46,5 @@ export type IProductDetail = Pick<
 
 export type ICartItem = Pick<
   IProduct,
-  "id" | "title" | "price" | "currency" | "discountPrice"
+  "id" | "title" | "price" | "currency" | "discountPrice" | "productUrl"
 > & { color: string; size: string; amount: number };

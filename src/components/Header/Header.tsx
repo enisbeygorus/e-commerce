@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { ShoppingCartIcon } from "../../assets/Icons";
 import CartItems from "../CartUI/CartItems";
 import SearchBar from "../SearchBar/SearchBar";
+import { useSelector } from "react-redux";
+import { ACTION_SELECTORS } from "../../store/actionSelectors";
+
 const Header = () => {
-  const numberOfCartItems = 0;
+  const { amount: numberOfCartItems } = useSelector(ACTION_SELECTORS.getCart);
 
   const numberOfCartHandler = (value: number) => {
     let text = "" + value;
@@ -47,7 +50,6 @@ const Header = () => {
                   <div className="relative">
                     <ShoppingCartIcon width={20} height={20} className="mr-2" />
                   </div>
-                  {/* <span className="mr-2 hidden sm:block">Cart</span> */}
                   {numberOfCartItems !== 0 ? (
                     <span className="flex justify-center items-center w-5 h-5 rounded-full text-white bg-red-500 ">
                       {numberOfCartHandler(numberOfCartItems)}

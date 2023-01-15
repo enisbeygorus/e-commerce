@@ -3,31 +3,31 @@ import { ICartItem } from "../../types";
 import { ICartState } from "../../types";
 
 const initialCartItems: Array<ICartItem> = [
-  {
-    id: "1",
-    title: "Erkek Alaska Fermuar Detay Oversize Sweatshir",
-    color: "Black",
-    size: "M",
-    price: "99,99",
-    currency: "TL",
-    discountPrice: "50,88",
-    amount: 1,
-  },
-  {
-    id: "2",
-    title: "Erkek Alaska Fermuar Detay Oversize Sweatshir 2",
-    color: "Red",
-    size: "S",
-    price: "224,00",
-    currency: "TL",
-    discountPrice: "50,88",
-    amount: 1,
-  },
+  // {
+  //   id: "1",
+  //   title: "Erkek Alaska Fermuar Detay Oversize Sweatshirt",
+  //   color: "Black",
+  //   size: "M",
+  //   price: "99,99",
+  //   currency: "TL",
+  //   discountPrice: "50,88",
+  //   amount: 1,
+  // },
+  // {
+  //   id: "2",
+  //   title: "Erkek Alaska Fermuar Detay Oversize Sweatshirt 2",
+  //   color: "Red",
+  //   size: "S",
+  //   price: "224,00",
+  //   currency: "TL",
+  //   discountPrice: "50,88",
+  //   amount: 1,
+  // },
 ];
 
 const initialState: ICartState = {
   cartItems: initialCartItems,
-  amount: 0,
+  amount: initialCartItems.length,
 };
 
 const cartSlice = createSlice({

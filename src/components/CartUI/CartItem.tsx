@@ -25,7 +25,7 @@ const CartItem = ({ item, isHeaderPopup }: ICartItemComp) => {
         </div>
         <div className="w-full md:flex">
           <div className="w-full md:w-5/12 text-left ">
-            <Link to="/products/Erkek-Gri-Örme-Yarım-Fermuar-Oversize-Sweatshirt">
+            <Link to={`/products/${item.productUrl}`}>
               <div className={`${isHeaderPopup}`}>{item.title}</div>
             </Link>
             <div className="flex text-sm ">

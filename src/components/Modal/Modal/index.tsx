@@ -36,7 +36,7 @@ export const Modal = ({ isModalOpen, content, header = null }: IModal) => {
           onClick={() => toggleModalHandler(false)}
           className="overlay w-full h-full absolute top-0 left-0 bg-gray-700 opacity-50"
         ></div>
-        <div className="relative w-full h-full max-w-2xl md:h-auto z-10 p-4 sm:p-0">
+        <div className="relative w-full max-w-2xl md:h-auto z-10 p-4 sm:p-0">
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <div
               className={`${
