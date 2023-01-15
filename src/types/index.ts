@@ -1,5 +1,6 @@
 import {
   IProduct,
+  IProductColor,
   IAvailableColors,
   IProductDetail,
   ICartItem,
@@ -8,5 +9,12 @@ import {
 
 import { ICartState } from "./reduxStoreTypes";
 
-export type { IProduct, IProductDetail, ICartItem, IAvailableColors, ISizes };
+export type {
+  IProduct,
+  IProductDetail,
+  ICartItem,
+  IAvailableColors,
+  ISizes,
+  IProductColor,
+};
 export type { ICartState };

@@ -11,6 +11,7 @@ const initialCartItems: Array<ICartItem> = [
     price: "99,99",
     currency: "TL",
     discountPrice: "50,88",
+    amount: 1,
   },
   {
     id: "2",
@@ -20,6 +21,7 @@ const initialCartItems: Array<ICartItem> = [
     price: "224,00",
     currency: "TL",
     discountPrice: "50,88",
+    amount: 1,
   },
 ];
 
@@ -32,8 +34,9 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItem: (state, action: any) => {
-      state.cartItems = [...state.cartItems, action.cart];
+    addItem: (state, action: PayloadAction<ICartItem>) => {
+      state.cartItems = [...state.cartItems, action.payload];
+      state.amount++;
     },
     removeItem: (state, action: PayloadAction<string>) => {
       const itemId = action.payload;
@@ -41,7 +44,19 @@ const cartSlice = createSlice({
         (item: ICartItem) => item.id !== itemId
       );
     },
+    updateItem: (state, action: PayloadAction<ICartItem>) => {
+      const cart = state.cartItems.find(
+        (item: ICartItem) => item.id !== action.payload.id
+      );
+      if (cart) {
+        const indexOfCart = state.cartItems.indexOf(cart);
+        state.cartItems[indexOfCart] = action.payload;
+        // state.cartItems = [...state.cartItems];
+      }
+    },
   },
 });
+
+export const { addItem } = cartSlice.actions;
 
 export default cartSlice.reducer;

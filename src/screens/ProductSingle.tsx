@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addItem } from "../store/reducers/cart";
+import { ACTION_SELECTORS } from "../store/actionSelectors";
 
 import Section from "../components/Section/Section";
 import Price from "../components/ProductSinglePageUI/Price";
@@ -11,17 +14,26 @@ import ProductColors from "../components/ProductSinglePageUI/ProductColors";
 import ProductImages from "../components/ProductSinglePageUI/ProductImages";
 import { HeartIcon2 } from "../assets/Icons";
 import Button from "../components/Button/Button";
+import { SpinningLoading } from "../components/Loading";
 
 import { productData, productDataInitial, productsData } from "../database";
-import { IProduct } from "../types";
+import { IProduct, IProductColor, ICartItem } from "../types";
 
 const ProductSingle = () => {
   const [sizeSelected, setSelectedSize] = useState<string>("");
   const [itemCount, setItemCount] = useState<number>(1);
+  const [colorSelected, setColorSelected] = useState<IProductColor>(
+    productDataInitial.availableColors[0].id
+  );
+  const [loading, setLoading] = useState<boolean>(false);
   const [product, setProduct] = useState<IProduct>(productDataInitial);
   const { productName } = useParams();
+  const dispatch = useDispatch();
+
+  const { amount } = useSelector(ACTION_SELECTORS.getCart);
 
   const {
+    id,
     title,
     price,
     isFavorite,
@@ -34,15 +46,25 @@ const ProductSingle = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      const newProduct = productsData.find(
+      const foundProduct = productsData.find(
         (product) => product.productUrl === productName
       );
 
-      console.log("newProductnewProduct:", newProduct);
-      setProduct(newProduct ? newProduct : productDataInitial);
-      // setProduct(productData);
+      const newProduct = foundProduct ? foundProduct : productDataInitial;
+
+      setProduct(newProduct);
+      setColorSelected(newProduct.availableColors[0].id);
     }, 1500);
   }, [productName]);
+
+  useEffect(() => {
+    if (amount > 0) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+      console.log("Sepetiniz Güncellenmiştir: ", amount);
+    }
+  }, [amount]);
 
   const sizeSelectHandler = (value: string) => {
     setSelectedSize(value);
@@ -50,6 +72,21 @@ const ProductSingle = () => {
   const itemCountHandler = (value: number) => {
     if (itemCount + value < 1) return;
     setItemCount((prev) => prev + value);
+  };
+
+  const addToCartHandler = () => {
+    const newCart: ICartItem = {
+      id,
+      amount: itemCount,
+      color: "black",
+      currency,
+      discountPrice,
+      price,
+      size: sizeSelected,
+      title,
+    };
+    setLoading(true);
+    dispatch(addItem(newCart));
   };
 
   return (
@@ -68,7 +105,11 @@ const ProductSingle = () => {
               discountPrice={discountPrice}
             />
             <hr className="mb-8"></hr>
-            <ProductColors availableColors={availableColors} />
+            <ProductColors
+              setColorSelected={setColorSelected}
+              colorSelected={colorSelected}
+              availableColors={availableColors}
+            />
 
             <ProductSizes
               sizes={sizes}
@@ -81,10 +122,17 @@ const ProductSingle = () => {
               itemCountHandler={itemCountHandler}
             />
             <div className="w-full md:w-80 flex">
-              <Button
-                text="Add to cart"
-                className="bg-green-500 hover:bg-green-700 text-white w-full rounded-md"
-              />
+              {loading ? (
+                <Button className="bg-gray-200 rounded-md w-full flex justify-center items-center py-0">
+                  <SpinningLoading />
+                </Button>
+              ) : (
+                <Button
+                  onClick={addToCartHandler}
+                  text="Add to cart"
+                  className="bg-green-500 hover:bg-green-700 text-white w-full rounded-md"
+                />
+              )}
               <div className="flex justify-center items-center ml-2">
                 {isFavorite ? (
                   <HeartIcon2 width={40} height={40} fill="black" />

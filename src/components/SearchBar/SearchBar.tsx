@@ -5,7 +5,6 @@ const SearchBar = () => {
   const [searchText, setSearchText] = useState<string>("");
 
   const searchTextHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget.value);
     setSearchText(e.currentTarget.value);
   };
 

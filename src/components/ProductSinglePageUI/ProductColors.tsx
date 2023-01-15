@@ -1,19 +1,22 @@
-import { useState } from "react";
-import { IAvailableColors } from "../../types";
+import { IAvailableColors, IProductColor } from "../../types";
 
 interface IProductColors {
   availableColors: Array<IAvailableColors>;
+  colorSelected: IProductColor;
+  setColorSelected: (id: string) => void;
 }
 
-const ProductColors = ({ availableColors }: IProductColors) => {
-  const [selectedColorId, setSelectedColorId] = useState<string>("0");
-
+const ProductColors = ({
+  colorSelected,
+  setColorSelected,
+  availableColors,
+}: IProductColors) => {
   if (availableColors.length === 0) {
     return null;
   }
   const selectColorHandler = (id: string) => {
     if (id === "") return;
-    setSelectedColorId(id);
+    setColorSelected(id);
   };
 
   const colorsList = availableColors.map((colorData, index) => {
@@ -22,7 +25,7 @@ const ProductColors = ({ availableColors }: IProductColors) => {
         <div
           onClick={() => selectColorHandler(colorData.id)}
           className={`${
-            colorData.id === selectedColorId
+            colorData.id === colorSelected
               ? "border-green-400"
               : "border-transparent"
           } w-20 aspect-auto p-1 border-4 rounded-md`}

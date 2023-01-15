@@ -25,7 +25,7 @@ const CartItems = ({ isHeaderPopup = false }: ICartItems) => {
 
   return (
     <div style={{ width: isHeaderPopup ? "500px" : "" }}>
-      <ul>{cartItem}</ul>;
+      <ul>{cartItem}</ul>
     </div>
   );
 };

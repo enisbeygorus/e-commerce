@@ -3,10 +3,12 @@ interface IProductProperties {
   value: string;
 }
 
+export type IProductColor = string;
+
 export interface IAvailableColors {
   id: string;
   productId: string;
-  colorName: string;
+  colorName: IProductColor;
   productUrl: string;
   imageUrl: string;
 }
@@ -45,4 +47,4 @@ export type IProductDetail = Pick<
 export type ICartItem = Pick<
   IProduct,
   "id" | "title" | "price" | "currency" | "discountPrice"
-> & { color: string; size: string };
+> & { color: string; size: string; amount: number };

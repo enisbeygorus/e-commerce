@@ -1,11 +1,15 @@
 interface IButton {
-  text: string;
+  text?: string;
   className?: string;
+  children?: React.ReactElement;
+  onClick?: <Type>(arg: Type) => void;
 }
 
-const Button = ({ text, className }: IButton) => {
+const Button = ({ children, onClick, text, className }: IButton) => {
   return (
-    <button className={`font-bold py-2 px-4  ${className}`}>{text}</button>
+    <button onClick={onClick} className={`font-bold py-2 px-4  ${className}`}>
+      {children ? children : text}
+    </button>
   );
 };
 
