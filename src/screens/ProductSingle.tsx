@@ -55,7 +55,9 @@ const ProductSingle = () => {
         });
 
         const newProduct = foundProduct ? foundProduct : productDataInitial;
+        const newSize = newProduct.sizes.availableSizes[0];
 
+        setSelectedSize(newSize);
         setProduct(newProduct);
         setColorSelected(newProduct.availableColors[0].id);
       }

@@ -8,12 +8,14 @@ interface IDataItem {
 interface IDropdown {
   data: Array<IDataItem>;
   defaultSelectedId: string;
+  onChange?: (id: string, value: string) => void;
   buttonClassName?: string;
 }
 
 const Dropdown = ({
   buttonClassName = "px-4 py-1",
   data,
+  onChange,
   defaultSelectedId,
 }: IDropdown) => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
@@ -23,15 +25,18 @@ const Dropdown = ({
     setShowDropDown((prev) => !prev);
   };
 
-  const selectItem = (value: string) => {
+  const selectItem = (id: string, value: string) => {
     _setSelectedId(value);
     setShowDropDown(false);
+    if (onChange) {
+      onChange(id, value);
+    }
   };
 
   const sortItem = (listItem: IDataItem, index: number) => (
     <li key={index}>
       <button
-        onClick={() => selectItem(listItem.id)}
+        onClick={() => selectItem(listItem.id, listItem.value)}
         className="block w-full text-center px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
       >
         {listItem.value}

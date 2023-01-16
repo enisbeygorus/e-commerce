@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { TrashCanIcon } from "../../assets/Icons";
 import { ICartItem } from "../../types";
 import Dropdown from "../Dropdown";
+import { useDispatch } from "react-redux";
+import { removeItem, updateItem } from "../../store/reducers/cart";
 
 interface ICartItemComp {
   isHeaderPopup: boolean;
@@ -9,6 +11,19 @@ interface ICartItemComp {
 }
 
 const CartItem = ({ item, isHeaderPopup }: ICartItemComp) => {
+  const dispatch = useDispatch();
+
+  const removeItemHandler = (id: string) => {
+    dispatch(removeItem(id));
+  };
+
+  const amountChangeHandler = (id: string, value: string) => {
+    const parsedValue = parseInt(value);
+    const newCartItem: ICartItem = { ...item, amount: parsedValue };
+
+    dispatch(updateItem(newCartItem));
+  };
+
   return (
     <li className="mb-4">
       <div
@@ -52,10 +67,12 @@ const CartItem = ({ item, isHeaderPopup }: ICartItemComp) => {
             {!isHeaderPopup ? (
               <div className="flex justify-center items-center">
                 <Dropdown
+                  onChange={amountChangeHandler}
                   buttonClassName="py-0 sm:py-0.5"
                   defaultSelectedId={item.amount.toString()}
-                  data={Array.from(Array(20).keys()).map((value) => {
-                    return { id: value.toString(), value: value.toString() };
+                  data={Array.from(Array(20).keys()).map((val) => {
+                    val++;
+                    return { id: val.toString(), value: val.toString() };
                   })}
                 />
               </div>
@@ -64,7 +81,10 @@ const CartItem = ({ item, isHeaderPopup }: ICartItemComp) => {
               {item.price} {item.currency}
             </div>
             <div className="flex justify-center items-center">
-              <div className="flex justify-center items-center cursor-pointer">
+              <div
+                onClick={() => removeItemHandler(item.id)}
+                className="flex justify-center items-center cursor-pointer"
+              >
                 <TrashCanIcon width={20} height={20} />
               </div>
             </div>
