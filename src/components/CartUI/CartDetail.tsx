@@ -21,7 +21,7 @@ const CartDetail = () => {
       <div>
         <Button
           text="proceed to payment"
-          className="bg-green-400 w-full rounded-md text-white capitalize"
+          className="bg-green-700 w-full rounded-md text-white capitalize"
         />
       </div>
     </div>

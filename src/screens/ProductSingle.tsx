@@ -45,16 +45,20 @@ const ProductSingle = () => {
   } = product;
 
   useEffect(() => {
-    // api call
+    // api call for product
     setTimeout(() => {
-      const foundProduct = productsData.find(
-        (product) => product.productUrl === productName
-      );
+      if (productName) {
+        const foundProduct = productsData.find((product) => {
+          const regex = new RegExp(productName, "i");
 
-      const newProduct = foundProduct ? foundProduct : productDataInitial;
+          return product.productUrl.match(regex);
+        });
 
-      setProduct(newProduct);
-      setColorSelected(newProduct.availableColors[0].id);
+        const newProduct = foundProduct ? foundProduct : productDataInitial;
+
+        setProduct(newProduct);
+        setColorSelected(newProduct.availableColors[0].id);
+      }
     }, 1500);
   }, [productName]);
 

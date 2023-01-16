@@ -18,7 +18,9 @@ export const productDataInitial: IProduct = {
   deliverTime: "",
   productDescription: "",
   productProperties: [],
-  stock: 0,
+  stockAmount: 0,
+  stockType: "adet",
+  tax: 8,
 };
 
 export const productData: IProduct = {
@@ -28,7 +30,7 @@ export const productData: IProduct = {
     "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
   ],
   productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
-  price: "250,55",
+  price: "250.55",
   sizes: { allProductSizes: ["s", "m", "l", "xl"], availableSizes: ["m", "l"] },
   availableColors: [
     {
@@ -56,7 +58,9 @@ export const productData: IProduct = {
   deliverTime: "2 Gün",
   productDescription: "",
   productProperties: [{ name: "kumaş", value: "%100 Pamuk / %100 Cotton" }],
-  stock: 0,
+  stockAmount: 0,
+  stockType: "adet",
+  tax: 8,
 };
 
 export const productsData: Array<IProduct> = [
@@ -66,7 +70,7 @@ export const productsData: Array<IProduct> = [
     imageUrls: [
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
     ],
-    price: "250,55",
+    price: "250.55",
     productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
     sizes: {
       allProductSizes: ["s", "m", "l", "xl"],
@@ -90,7 +94,9 @@ export const productsData: Array<IProduct> = [
     deliverTime: "2 Gün",
     productDescription: "",
     productProperties: [{ name: "kumaş", value: "%100 Pamuk / %100 Cotton" }],
-    stock: 0,
+    stockAmount: 0,
+    stockType: "adet",
+    tax: 8,
   },
   {
     id: "1",
@@ -99,7 +105,7 @@ export const productsData: Array<IProduct> = [
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/unisex-mavi-w-citcitli-oversize-pelus--78-f04.jpg",
     ],
     productUrl: "unisex-mavi-w-citcitli-oversize-pelus-ceket",
-    price: "250,55",
+    price: "250.55",
     sizes: {
       allProductSizes: ["s", "m", "l", "xl"],
       availableSizes: ["m", "l"],
@@ -122,7 +128,9 @@ export const productsData: Array<IProduct> = [
     deliverTime: "2 Gün",
     productDescription: "",
     productProperties: [{ name: "kumaş", value: "%100 Pamuk / %100 Cotton" }],
-    stock: 3,
+    stockAmount: 3,
+    stockType: "adet",
+    tax: 8,
   },
   {
     id: "2",
@@ -131,7 +139,7 @@ export const productsData: Array<IProduct> = [
       "https://st2.myideasoft.com/idea/jq/35/myassets/products/076/8508228a-08b0-4f95-a124-05ed5e80e721.jpg?revision=1645306292",
     ],
 
-    price: "250,55",
+    price: "250.55",
     productUrl: "unisex-beyaz-w-citcitli-oversize-pelus-ceket",
     sizes: {
       allProductSizes: ["s", "m", "l", "xl"],
@@ -155,7 +163,9 @@ export const productsData: Array<IProduct> = [
     deliverTime: "2 Gün",
     productDescription: "",
     productProperties: [{ name: "kumaş", value: "%100 Pamuk / %100 Cotton" }],
-    stock: 10,
+    stockAmount: 10,
+    stockType: "adet",
+    tax: 8,
   },
   {
     id: "3",
@@ -163,7 +173,7 @@ export const productsData: Array<IProduct> = [
     imageUrls: [
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/unisex-siyah-w-citcitli-oversize-pelus-dcf114.jpg",
     ],
-    price: "250,55",
+    price: "250.55",
     productUrl: "unisex-siyah-w-citcitli-oversize-pelus-ceket",
     sizes: {
       allProductSizes: ["s", "m", "l", "xl"],
@@ -178,6 +188,8 @@ export const productsData: Array<IProduct> = [
     deliverTime: "2 Gün",
     productDescription: "",
     productProperties: [{ name: "kumaş", value: "%100 Pamuk / %100 Cotton" }],
-    stock: 20,
+    stockAmount: 20,
+    stockType: "adet",
+    tax: 8,
   },
 ];

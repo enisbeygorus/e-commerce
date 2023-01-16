@@ -34,7 +34,12 @@ export interface IProduct {
   deliverTime: string;
   productDescription: string;
   productProperties: Array<IProductProperties>;
-  stock: number;
+  stockAmount: number;
+  stockType: string;
+  brandName?: string;
+  brandId?: string;
+  brandImageUrl?: string;
+  tax: number;
 }
 
 export type IProductDetail = Pick<

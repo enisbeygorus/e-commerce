@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { TrashCanIcon } from "../../assets/Icons";
 import { ICartItem } from "../../types";
+import Dropdown from "../Dropdown";
 
 interface ICartItemComp {
   isHeaderPopup: boolean;
@@ -15,11 +16,21 @@ const CartItem = ({ item, isHeaderPopup }: ICartItemComp) => {
           isHeaderPopup ? "border-x-0" : ""
         }`}
       >
-        <input className="mr-4 w-" type={"checkbox"} />
-        <div className="h-20 aspect-auto mr-4">
+        <div className="mr-4 flex flex-col items-center justify-center">
+          <label>
+            <input
+              aria-label="cartItem_checkbox"
+              id={`cartItem_checkbox_${item.id}_${Math.floor(
+                Math.random() * 100000
+              )}`}
+              type={"checkbox"}
+            />
+          </label>
+        </div>
+        <div className="w-20 aspect-auto mr-4 flex items-center">
           <img
             alt="cart_item_image"
-            className="w-full h-full"
+            className="w-full h-auto"
             src="https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg"
           />
         </div>
@@ -40,11 +51,13 @@ const CartItem = ({ item, isHeaderPopup }: ICartItemComp) => {
           <div className="flex flex-1 justify-between md:justify-around">
             {!isHeaderPopup ? (
               <div className="flex justify-center items-center">
-                <select className="w-24 outline-none text-center border">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                </select>
+                <Dropdown
+                  buttonClassName="py-0 sm:py-0.5"
+                  defaultSelectedId={item.amount.toString()}
+                  data={Array.from(Array(20).keys()).map((value) => {
+                    return { id: value.toString(), value: value.toString() };
+                  })}
+                />
               </div>
             ) : null}
             <div className="flex justify-center items-center">

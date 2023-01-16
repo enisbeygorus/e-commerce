@@ -3,16 +3,17 @@ import { ICartItem } from "../../types";
 import { ICartState } from "../../types";
 
 const initialCartItems: Array<ICartItem> = [
-  // {
-  //   id: "1",
-  //   title: "Erkek Alaska Fermuar Detay Oversize Sweatshirt",
-  //   color: "Black",
-  //   size: "M",
-  //   price: "99,99",
-  //   currency: "TL",
-  //   discountPrice: "50,88",
-  //   amount: 1,
-  // },
+  {
+    id: "1",
+    title: "Erkek Alaska Fermuar Detay Oversize Sweatshirt",
+    color: "Black",
+    size: "M",
+    price: "99,99",
+    currency: "TL",
+    discountPrice: "50,88",
+    amount: 1,
+    productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
+  },
   // {
   //   id: "2",
   //   title: "Erkek Alaska Fermuar Detay Oversize Sweatshirt 2",
