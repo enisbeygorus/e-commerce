@@ -1,15 +1,21 @@
 import { Children, useEffect, useState, useRef, useMemo } from "react";
 import CarouselCart from "./CarouselCart";
 import CarousalMultiClass from "./CarousalMultiClass";
-// import { CarousalMultiInstance } from "./helperFunctions";
+import useWindowSize from "../../../hooks/useWindowSize";
+import { IResponsiveItem } from "./types";
 
 interface ICarouselMulti {
   children?: React.ReactNode;
   gapBetween?: number;
+  responsive: Array<IResponsiveItem>;
 }
 type ChildrenArray = Array<React.ReactNode>;
 
-const CarouselMulti = ({ children, gapBetween = 20 }: ICarouselMulti) => {
+const CarouselMulti = ({
+  children,
+  gapBetween = 20,
+  responsive,
+}: ICarouselMulti) => {
   const carousalWrapperRef = useRef<HTMLDivElement>(null);
   const caroulsaRef = useRef<HTMLDivElement>(null);
   const arrayOfChildren = useMemo(() => {
@@ -17,19 +23,20 @@ const CarouselMulti = ({ children, gapBetween = 20 }: ICarouselMulti) => {
   }, [children]);
   const [arrayOfCards, setArrayOfCards] = useState<ChildrenArray>([]);
   const CarousalMultiInstance = useMemo(() => new CarousalMultiClass(), []);
+  const [windowWidth] = useWindowSize();
 
   useEffect(() => {
     // calculate carousalWrapper width and adjust cartWidth
     if (carousalWrapperRef.current && caroulsaRef.current) {
       const numberOfItems = arrayOfChildren.length;
-      const numberOfCartsShow = 4;
 
       const carousalWrapperWidth = carousalWrapperRef.current.offsetWidth;
 
+      // dont change carousalResponsive and init order
+      CarousalMultiInstance.carousalResponsive(windowWidth, responsive);
       CarousalMultiInstance.init({
         numberOfItems: numberOfItems,
         gapBetween,
-        numberOfCartsShow,
         carousalWrapperWidth,
         htmlElement: caroulsaRef.current,
       });
@@ -55,7 +62,20 @@ const CarouselMulti = ({ children, gapBetween = 20 }: ICarouselMulti) => {
 
       setArrayOfCards(carousalContent);
     }
-  }, [gapBetween, arrayOfChildren]);
+  }, [
+    gapBetween,
+    arrayOfChildren,
+    windowWidth,
+    responsive,
+    CarousalMultiInstance,
+  ]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      CarousalMultiInstance.caroulsaTranformController(1);
+    }, 3500);
+    return () => clearInterval(intervalId);
+  }, [CarousalMultiInstance]);
 
   const carousalTransformHandler = (direction: 1 | -1) => {
     CarousalMultiInstance.caroulsaTranformController(direction);

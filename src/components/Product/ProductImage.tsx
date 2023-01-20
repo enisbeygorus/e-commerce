@@ -23,6 +23,7 @@ const ProductImage = ({
       >
         <div className="max-w-full rounded-md overflow-hidden">
           <img
+            draggable={false}
             className="resimOrginal w-full h-auto owl-lazy"
             src={imageUrls[0]}
             data-src="/Uploads/UrunResimleri/thumb/erkek-gri-orme-yarim-fermuar-oversize--ee4-0f.jpg"

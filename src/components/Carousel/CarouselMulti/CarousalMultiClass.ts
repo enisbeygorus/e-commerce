@@ -1,3 +1,5 @@
+import { IResponsiveItem } from "./types";
+
 class CarousalMultiClass {
   carousalWrapperWidth: number;
   numberOfItems: number;
@@ -18,7 +20,7 @@ class CarousalMultiClass {
     this.numberOfItems = 0;
     this.gapBetween = 20;
     this.cartWidth = 0;
-    this.numberOfCartsShow = 0;
+    this.numberOfCartsShow = 3;
 
     this.numberOfPxToMove = 0;
     this.numberOfClonesToAdd = 0;
@@ -34,38 +36,32 @@ class CarousalMultiClass {
   init({
     numberOfItems,
     gapBetween,
-    numberOfCartsShow,
     carousalWrapperWidth,
     htmlElement,
   }: Pick<
     CarousalMultiClass,
-    | "numberOfItems"
-    | "gapBetween"
-    | "numberOfCartsShow"
-    | "carousalWrapperWidth"
-    | "htmlElement"
+    "numberOfItems" | "gapBetween" | "carousalWrapperWidth" | "htmlElement"
   >) {
     this.numberOfItems = numberOfItems;
     this.gapBetween = gapBetween;
-    this.numberOfCartsShow = numberOfCartsShow;
     this.carousalWrapperWidth = carousalWrapperWidth;
 
     this.htmlElement = htmlElement;
 
     this.cartWidth = Math.floor(
-      (carousalWrapperWidth - (numberOfCartsShow - 1) * gapBetween) /
-        numberOfCartsShow
+      (carousalWrapperWidth - (this.numberOfCartsShow - 1) * gapBetween) /
+        this.numberOfCartsShow
     );
 
     this.numberOfPxToMove = this.cartWidth + this.gapBetween;
-    this.numberOfClonesToAdd = Math.ceil(numberOfCartsShow / 2) * 2;
+    this.numberOfClonesToAdd = Math.ceil(this.numberOfCartsShow / 2) * 2;
     this.initialLandingPosition =
       (this.numberOfClonesToAdd / 2) * this.numberOfPxToMove;
 
     this.landingPosition = this.initialLandingPosition;
 
     this.maxLandingPosition =
-      (this.numberOfItems + this.numberOfClonesToAdd - numberOfCartsShow) *
+      (this.numberOfItems + this.numberOfClonesToAdd - this.numberOfCartsShow) *
       this.numberOfPxToMove;
 
     this.minLandingPosition = 0;
@@ -166,8 +162,26 @@ class CarousalMultiClass {
         (this.numberOfCartsShow % 2) * this.numberOfPxToMove;
       return;
     }
+  }
 
-    // return this.landingPosition;
+  carousalResponsive(
+    windowWidth: number,
+    responsive: Array<IResponsiveItem> | undefined
+  ) {
+    if (!responsive) return;
+
+    const _responsive = [...responsive];
+    _responsive.sort(function (a, b) {
+      return a.maxWidth - b.maxWidth;
+    });
+
+    const responsiveItem = _responsive.find((responsiveItem) => {
+      return responsiveItem.maxWidth > windowWidth;
+    });
+
+    if (responsiveItem) {
+      this.numberOfCartsShow = responsiveItem.numberOfCartsShow;
+    }
   }
 }
 
