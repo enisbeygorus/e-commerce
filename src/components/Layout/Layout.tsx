@@ -7,7 +7,7 @@ import Home from "../../screens/Home";
 import Products from "../../screens/Products";
 import ProductSingle from "../../screens/ProductSingle";
 import Cart from "../../screens/Cart";
-import Category from "../../screens/Category";
+// import Category from "../../screens/Category";
 
 const Layout = () => {
   return (

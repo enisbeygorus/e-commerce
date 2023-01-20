@@ -26,7 +26,7 @@ const Banner = () => {
             </div>
           </div>
           <div className="hidden lg:block overflow-hidden h-full max-w-[410px] w-1/3 absolute right-0 top-1/2 -translate-y-1/2 z-20">
-            <img className="w-full" src={_women_model_1} />
+            <img alt="banner_image" className="w-full" src={_women_model_1} />
           </div>
         </div>
       </div>

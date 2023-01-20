@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Dropdown from "../Dropdown";
 const sortData = [
   { id: "RECOMMENDED", value: "Recommended" },
@@ -9,8 +9,8 @@ const sortData = [
 ];
 
 const Sort = () => {
-  const [showDropDown, setShowDropDown] = useState<boolean>(false);
-  const [seletedValue, setSelectedValue] = useState<number>(0);
+  // const [showDropDown, setShowDropDown] = useState<boolean>(false);
+  // const [seletedValue, setSelectedValue] = useState<number>(0);
 
   return <Dropdown data={sortData} defaultSelectedId={sortData[0].id} />;
 };

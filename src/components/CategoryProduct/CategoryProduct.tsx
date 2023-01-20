@@ -12,7 +12,11 @@ const CategoryProduct = () => {
             {data.name}
           </div>
           <div className="w-full h-full bg-black overflow-hidden cursor-pointer">
-            <img className="w-full h-full bg-cover" src={data.imageUrl} />
+            <img
+              alt="category_image"
+              className="w-full h-full bg-cover"
+              src={data.imageUrl}
+            />
           </div>
         </div>
       </div>
