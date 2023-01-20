@@ -1,4 +1,4 @@
-class CarousalMulti {
+class CarousalMultiClass {
   carousalWrapperWidth: number;
   numberOfItems: number;
   gapBetween: number;
@@ -11,9 +11,24 @@ class CarousalMulti {
   maxLandingPosition: number;
   minLandingPosition: number;
   isTransformationAllowed: boolean;
+  htmlElement: HTMLElement | null;
 
-  constructor(data: Partial<CarousalMulti>) {
-    Object.assign(this, data);
+  constructor() {
+    this.carousalWrapperWidth = 0;
+    this.numberOfItems = 0;
+    this.gapBetween = 20;
+    this.cartWidth = 0;
+    this.numberOfCartsShow = 0;
+
+    this.numberOfPxToMove = 0;
+    this.numberOfClonesToAdd = 0;
+    this.initialLandingPosition = 0;
+    this.landingPosition = 0;
+    this.maxLandingPosition = 0;
+    this.minLandingPosition = 0;
+    this.isTransformationAllowed = true;
+
+    this.htmlElement = null;
   }
 
   init({
@@ -21,21 +36,26 @@ class CarousalMulti {
     gapBetween,
     numberOfCartsShow,
     carousalWrapperWidth,
+    htmlElement,
   }: Pick<
-    CarousalMulti,
+    CarousalMultiClass,
     | "numberOfItems"
     | "gapBetween"
     | "numberOfCartsShow"
     | "carousalWrapperWidth"
+    | "htmlElement"
   >) {
     this.numberOfItems = numberOfItems;
     this.gapBetween = gapBetween;
     this.numberOfCartsShow = numberOfCartsShow;
     this.carousalWrapperWidth = carousalWrapperWidth;
 
-    this.cartWidth =
+    this.htmlElement = htmlElement;
+
+    this.cartWidth = Math.floor(
       (carousalWrapperWidth - (numberOfCartsShow - 1) * gapBetween) /
-      numberOfCartsShow;
+        numberOfCartsShow
+    );
 
     this.numberOfPxToMove = this.cartWidth + this.gapBetween;
     this.numberOfClonesToAdd = Math.ceil(numberOfCartsShow / 2) * 2;
@@ -50,6 +70,8 @@ class CarousalMulti {
 
     this.minLandingPosition = 0;
     this.isTransformationAllowed = true;
+
+    this.carousalTransform();
   }
 
   carousalContent() {
@@ -92,19 +114,61 @@ class CarousalMulti {
 
     return newMainCartArr;
   }
+
+  caroulsaTranformController(direction: 1 | -1) {
+    if (!this.isTransformationAllowed) {
+      return;
+    }
+
+    this.landingPosition += direction * this.numberOfPxToMove;
+
+    if (this.htmlElement) {
+      this.htmlElement.style.transition = "all 0.8s ease 0s";
+      this.carousalTransform();
+    }
+    if (
+      this.landingPosition === this.maxLandingPosition ||
+      this.landingPosition === this.minLandingPosition
+    ) {
+      this.isTransformationAllowed = false;
+      return;
+    }
+  }
+
+  carousalTransform() {
+    if (this.htmlElement) {
+      this.htmlElement.style.transform =
+        "translate3d(-" + this.landingPosition + "px, 0px, 0px)";
+    }
+  }
+
+  carousalTransitionEndHandler() {
+    this.carousalMaxAndMinLandingPositionCalculate();
+    if (this.htmlElement) {
+      this.htmlElement.style.transition = "";
+
+      this.htmlElement.style.transform =
+        "translate3d(-" + this.landingPosition + "px, 0px, 0px)";
+      this.isTransformationAllowed = true;
+    }
+  }
+
+  carousalMaxAndMinLandingPositionCalculate() {
+    if (this.landingPosition === this.maxLandingPosition) {
+      this.landingPosition =
+        (this.numberOfCartsShow % 2) * this.numberOfPxToMove;
+      return;
+    }
+
+    if (this.landingPosition === this.minLandingPosition) {
+      this.landingPosition =
+        this.maxLandingPosition -
+        (this.numberOfCartsShow % 2) * this.numberOfPxToMove;
+      return;
+    }
+
+    // return this.landingPosition;
+  }
 }
 
-export const CarousalMultiInstance = new CarousalMulti({
-  carousalWrapperWidth: 0,
-  numberOfItems: 0,
-  gapBetween: 20,
-  cartWidth: 0,
-  numberOfCartsShow: 0,
-  numberOfPxToMove: 0,
-  numberOfClonesToAdd: 0,
-  initialLandingPosition: 0,
-  landingPosition: 0,
-  maxLandingPosition: 0,
-  minLandingPosition: 0,
-  isTransformationAllowed: true,
-});
+export default CarousalMultiClass;
