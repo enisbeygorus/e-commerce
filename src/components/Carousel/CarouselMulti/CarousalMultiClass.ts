@@ -121,14 +121,15 @@ class CarousalMultiClass {
     if (this.htmlElement) {
       this.htmlElement.style.transition = "all 0.8s ease 0s";
       this.carousalTransform();
-    }
-    if (
-      this.landingPosition === this.maxLandingPosition ||
-      this.landingPosition === this.minLandingPosition
-    ) {
       this.isTransformationAllowed = false;
-      return;
     }
+    // if (
+    //   this.landingPosition === this.maxLandingPosition ||
+    //   this.landingPosition === this.minLandingPosition
+    // ) {
+    //   this.isTransformationAllowed = false;
+    //   return;
+    // }
   }
 
   carousalTransform() {
@@ -168,7 +169,7 @@ class CarousalMultiClass {
     windowWidth: number,
     responsive: Array<IResponsiveItem> | undefined
   ) {
-    if (!responsive) return;
+    if (!responsive || responsive.length === 0) return;
 
     const _responsive = [...responsive];
     _responsive.sort(function (a, b) {
@@ -181,6 +182,9 @@ class CarousalMultiClass {
 
     if (responsiveItem) {
       this.numberOfCartsShow = responsiveItem.numberOfCartsShow;
+    } else {
+      this.numberOfCartsShow =
+        _responsive[_responsive.length - 1].numberOfCartsShow;
     }
   }
 }

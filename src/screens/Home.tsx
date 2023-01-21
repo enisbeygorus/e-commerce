@@ -7,12 +7,12 @@ import CarouselHome from "../components/Carousel/CarouselHome/CarouselHome";
 const Home = () => {
   return (
     <div>
-      <Section widthFull={true}>
+      <Section className="mb-8" widthFull={true}>
         <Banner />
       </Section>
-      <Section maxWidth="max-w-[1250px]">
+      {/* <Section maxWidth="max-w-[1250px]">
         <CategoryProduct />
-      </Section>
+      </Section> */}
       <Section maxWidth="max-w-[1250px]">
         <CarouselHome />
       </Section>

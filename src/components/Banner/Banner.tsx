@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Banner = () => {
   return (
     <div
-      style={{ backgroundColor: "#ffa861", height: "70vh" }}
+      style={{ backgroundColor: "#ffa861", height: "80vh" }}
       className="w-full "
     >
       <div className="max-w-[1250px] flex h-full w-4/5 relative m-auto">

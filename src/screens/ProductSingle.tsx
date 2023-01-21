@@ -62,6 +62,10 @@ const ProductSingle = () => {
         setColorSelected(newProduct.availableColors[0].id);
       }
     }, 1500);
+
+    window.scrollTo({
+      top: 0,
+    });
   }, [productName]);
 
   const sizeSelectHandler = (value: string) => {
@@ -101,7 +105,7 @@ const ProductSingle = () => {
   return (
     <div>
       <Section maxWidth="max-w-[1250px]">
-        <div className="md:flex w-full">
+        <div id="" className="md:flex w-full">
           <div className="flex flex-1 md:w-1/2 justify-center">
             <ProductImages imageUrls={imageUrls} />
           </div>
