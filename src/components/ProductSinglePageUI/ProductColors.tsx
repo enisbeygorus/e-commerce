@@ -2,13 +2,13 @@ import { IAvailableColors, IProductColor } from "../../types";
 
 interface IProductColors {
   availableColors: Array<IAvailableColors>;
-  colorSelected: IProductColor;
-  setColorSelected: (id: string) => void;
+  colorSelectedProductId: IProductColor;
+  setColorSelectedProductId: (id: string) => void;
 }
 
 const ProductColors = ({
-  colorSelected,
-  setColorSelected,
+  colorSelectedProductId,
+  setColorSelectedProductId,
   availableColors,
 }: IProductColors) => {
   if (availableColors.length === 0) {
@@ -16,16 +16,16 @@ const ProductColors = ({
   }
   const selectColorHandler = (id: string) => {
     if (id === "") return;
-    setColorSelected(id);
+    setColorSelectedProductId(id);
   };
 
   const colorsList = availableColors.map((colorData, index) => {
     return (
       <li className="mr-4 overflow-hidden cursor-pointer" key={index}>
         <div
-          onClick={() => selectColorHandler(colorData.id)}
+          onClick={() => selectColorHandler(colorData.productId)}
           className={`${
-            colorData.id === colorSelected
+            colorData.productId === colorSelectedProductId
               ? "border-green-700"
               : "border-transparent"
           } w-20 aspect-auto p-1 border-4 rounded-md`}

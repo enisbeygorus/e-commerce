@@ -6,7 +6,6 @@ interface IProductProperties {
 export type IProductColor = string;
 
 export interface IAvailableColors {
-  id: string;
   productId: string;
   colorName: IProductColor;
   productUrl: string;

@@ -8,7 +8,7 @@ export const productDataInitial: IProduct = {
   productUrl: "",
   sizes: { allProductSizes: [""], availableSizes: [""] },
   availableColors: [
-    { id: "", productId: "123", colorName: "", productUrl: "", imageUrl: "" },
+    { productId: "123", colorName: "", productUrl: "", imageUrl: "" },
   ],
   categoryName: "",
   clotheModel: "",
@@ -34,7 +34,6 @@ export const productData: IProduct = {
   sizes: { allProductSizes: ["s", "m", "l", "xl"], availableSizes: ["m", "l"] },
   availableColors: [
     {
-      id: "0",
       colorName: "black",
       productId: "123",
       productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
@@ -42,7 +41,6 @@ export const productData: IProduct = {
         "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
     },
     {
-      id: "1",
       productId: "123",
       colorName: "yeşil",
       productUrl: "erkek-seritli-orme-yarim-fermuar-oversize-sweatshirt",
@@ -78,7 +76,6 @@ export const productsData: Array<IProduct> = [
     },
     availableColors: [
       {
-        id: "0",
         productId: "123",
         colorName: "black",
         productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
@@ -112,12 +109,18 @@ export const productsData: Array<IProduct> = [
     },
     availableColors: [
       {
-        id: "0",
-        productId: "123",
-        colorName: "black",
-        productUrl: "Erkek-Gri-Örme-Yarım-Fermuar-Oversize-Sweatshirt",
+        productId: "1",
+        colorName: "blue",
+        productUrl: "unisex-mavi-w-citcitli-oversize-pelus-ceket",
         imageUrl:
-          "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
+          "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/unisex-mavi-w-citcitli-oversize-pelus--78-f04.jpg",
+      },
+      {
+        productId: "3",
+        colorName: "black",
+        productUrl: "unisex-siyah-w-citcitli-oversize-pelus-ceket",
+        imageUrl:
+          "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/unisex-siyah-w-citcitli-oversize-pelus-dcf114.jpg",
       },
     ],
     categoryName: "üst giyim",
@@ -147,7 +150,6 @@ export const productsData: Array<IProduct> = [
     },
     availableColors: [
       {
-        id: "0",
         productId: "123",
         colorName: "black",
         productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
@@ -189,65 +191,6 @@ export const productsData: Array<IProduct> = [
     productDescription: "",
     productProperties: [{ name: "kumaş", value: "%100 Pamuk / %100 Cotton" }],
     stockAmount: 20,
-    stockType: "adet",
-    tax: 8,
-  },
-  {
-    id: "4",
-    title: "Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt",
-    imageUrls: [
-      "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/unisex-siyah-w-citcitli-oversize-pelus-dcf114.jpg",
-    ],
-    price: "250.55",
-    productUrl: "unisex-siyah-w-citcitli-oversize-pelus-ceket",
-    sizes: {
-      allProductSizes: ["s", "m", "l", "xl"],
-      availableSizes: ["m", "l"],
-    },
-    availableColors: [],
-    categoryName: "üst giyim",
-    clotheModel: "sweatshirt",
-    discountPrice: "0",
-    isFavorite: false,
-    currency: "TL",
-    deliverTime: "2 Gün",
-    productDescription: "",
-    productProperties: [{ name: "kumaş", value: "%100 Pamuk / %100 Cotton" }],
-    stockAmount: 20,
-    stockType: "adet",
-    tax: 8,
-  },
-  {
-    id: "5",
-    title: "Unisex Mavi W ÇıtÇıtlı Oversize Peluş Ceket",
-    imageUrls: [
-      "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/unisex-mavi-w-citcitli-oversize-pelus--78-f04.jpg",
-    ],
-    productUrl: "unisex-mavi-w-citcitli-oversize-pelus-ceket",
-    price: "250.55",
-    sizes: {
-      allProductSizes: ["s", "m", "l", "xl"],
-      availableSizes: ["m", "l"],
-    },
-    availableColors: [
-      {
-        id: "0",
-        productId: "123",
-        colorName: "black",
-        productUrl: "Erkek-Gri-Örme-Yarım-Fermuar-Oversize-Sweatshirt",
-        imageUrl:
-          "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
-      },
-    ],
-    categoryName: "üst giyim",
-    clotheModel: "sweatshirt",
-    discountPrice: "0",
-    isFavorite: false,
-    currency: "TL",
-    deliverTime: "2 Gün",
-    productDescription: "",
-    productProperties: [{ name: "kumaş", value: "%100 Pamuk / %100 Cotton" }],
-    stockAmount: 3,
     stockType: "adet",
     tax: 8,
   },

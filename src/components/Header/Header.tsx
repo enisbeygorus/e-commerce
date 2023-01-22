@@ -22,7 +22,7 @@ const Header = () => {
     <header>
       <div className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div className="flex flex-wrap justify-between items-stretch mx-auto max-w-screen-xl h-full">
-          <a href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             {/* <img
               src=""
               className="mr-3 h-6 sm:h-9"
@@ -31,7 +31,7 @@ const Header = () => {
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
               eCommerce
             </span>
-          </a>
+          </Link>
           <div className=" order-3 mt-4 basis-full md:mt-0 md:basis-0 md:order-none w-full  flex justify-end flex-1  px-2">
             <div className="w-full md:w-auto">
               <SearchBar />

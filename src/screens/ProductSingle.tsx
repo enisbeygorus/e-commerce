@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, ScrollRestoration } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItem } from "../store/reducers/cart";
 
@@ -19,12 +19,13 @@ import { ModalAddedCart } from "../components/Modal";
 import { productDataInitial, productsData } from "../database";
 import { IProduct, IProductColor, ICartItem } from "../types";
 
+import ProductSingleSkeletonLoading from "../components/Loading/SkeletonLoading/ProductSingleSkeletonLoading";
+
 const ProductSingle = () => {
   const [sizeSelected, setSelectedSize] = useState<string>("");
   const [itemCount, setItemCount] = useState<number>(1);
-  const [colorSelected, setColorSelected] = useState<IProductColor>(
-    productDataInitial.availableColors[0].id
-  );
+  const [colorSelectedProductId, setColorSelectedProductId] =
+    useState<IProductColor>(productDataInitial.availableColors[0].productId);
   const [loading, setLoading] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [product, setProduct] = useState<IProduct>(productDataInitial);
@@ -59,13 +60,13 @@ const ProductSingle = () => {
 
         setSelectedSize(newSize);
         setProduct(newProduct);
-        setColorSelected(newProduct.availableColors[0].id);
+        if (newProduct.availableColors.length > 0) {
+          setColorSelectedProductId(newProduct.availableColors[0].productId);
+        }
+
+        window.scrollTo(0, 0);
       }
     }, 1500);
-
-    window.scrollTo({
-      top: 0,
-    });
   }, [productName]);
 
   const sizeSelectHandler = (value: string) => {
@@ -102,6 +103,10 @@ const ProductSingle = () => {
     }, 3000);
   };
 
+  if (id === "") {
+    return <ProductSingleSkeletonLoading />;
+  }
+
   return (
     <div>
       <Section maxWidth="max-w-[1250px]">
@@ -119,8 +124,8 @@ const ProductSingle = () => {
             />
             <hr className="mb-8"></hr>
             <ProductColors
-              setColorSelected={setColorSelected}
-              colorSelected={colorSelected}
+              setColorSelectedProductId={setColorSelectedProductId}
+              colorSelectedProductId={colorSelectedProductId}
               availableColors={availableColors}
             />
 
@@ -157,6 +162,7 @@ const ProductSingle = () => {
           </div>
         </div>
       </Section>
+      {/* <ProductSingleSkeletonLoading /> */}
       <ModalAddedCart isModalOpen={showModal} />
     </div>
   );
