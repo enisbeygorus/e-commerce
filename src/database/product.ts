@@ -221,12 +221,16 @@ export const productsData: Array<IProduct> = [
   },
   {
     id: "5",
-    title: "Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt",
+    title: "Erkek Fermuar Detay Peluş Sweatshirt",
     imageUrls: [
-      "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
+      "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-fermuar-detay-pelus-sweatshirt-8b-439.jpg",
+      "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-fermuar-detay-pelus-sweatshirt-4ccb32.jpg",
+      "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-fermuar-detay-pelus-sweatshirt-06-c48.jpg",
+      "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-fermuar-detay-pelus-sweatshirt-06-c48.jpg",
+      "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-fermuar-detay-pelus-sweatshirt-06-c48.jpg",
     ],
     price: "250.55",
-    productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
+    productUrl: "erkek-fermuar-detay-pelus-sweatshirt",
     sizes: {
       allProductSizes: ["s", "m", "l", "xl"],
       availableSizes: ["m", "l"],

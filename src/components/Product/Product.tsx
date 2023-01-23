@@ -55,7 +55,7 @@ const Product = ({ product }: IProductComponent) => {
         isFavorite={isFavorite}
       />
 
-      {isMobile() && showAddCard ? (
+      {/* {isMobile() && showAddCard ? (
         <div
           id="product-add-to-card-1"
           title="Add To Card"
@@ -63,7 +63,7 @@ const Product = ({ product }: IProductComponent) => {
         >
           Add To Card
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

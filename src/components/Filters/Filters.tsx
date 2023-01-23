@@ -41,8 +41,7 @@ const Filters = () => {
 
   return (
     <div className="pt-4">
-      <h4 className="text-lg font-bold mb-2">Filters</h4>
-      <hr />
+      <div className="mb-8"></div>
       {filters}
     </div>
   );
