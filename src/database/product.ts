@@ -219,4 +219,37 @@ export const productsData: Array<IProduct> = [
     stockType: "adet",
     tax: 8,
   },
+  {
+    id: "5",
+    title: "Erkek Gri Örme Yarım Fermuar Oversize Sweatshirt",
+    imageUrls: [
+      "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
+    ],
+    price: "250.55",
+    productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
+    sizes: {
+      allProductSizes: ["s", "m", "l", "xl"],
+      availableSizes: ["m", "l"],
+    },
+    availableColors: [
+      {
+        productId: "123",
+        colorName: "black",
+        productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
+        imageUrl:
+          "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
+      },
+    ],
+    categoryName: "üst giyim",
+    clotheModel: "gömlek",
+    discountPrice: "195.50",
+    isFavorite: true,
+    currency: "TL",
+    deliverTime: "2 Gün",
+    productDescription: "",
+    productProperties: [{ name: "kumaş", value: "%100 Pamuk / %100 Cotton" }],
+    stockAmount: 0,
+    stockType: "adet",
+    tax: 8,
+  },
 ];

@@ -9,6 +9,7 @@ import Home from "../../screens/Home";
 import Products from "../../screens/Products";
 import ProductSingle from "../../screens/ProductSingle";
 import Cart from "../../screens/Cart";
+import Authetication from "../../screens/Authetication";
 
 import ScrollToTop from "../../hooks/useScrollTop";
 import CloseSideBar from "../../hooks/CloseSideBar";
@@ -38,8 +39,9 @@ const Layout = () => {
       <div>
         <Routes>
           <Route path={`/`} element={<Home />} />
-          <Route path={`/:name`} element={<Products />} />
           <Route path={`/cart`} element={<Cart />} />
+          <Route path={`/authetication`} element={<Authetication />} />
+          <Route path={`/:name`} element={<Products />} />
           <Route path={`/products/:productName`} element={<ProductSingle />} />
         </Routes>
       </div>
