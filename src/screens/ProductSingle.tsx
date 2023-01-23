@@ -162,7 +162,6 @@ const ProductSingle = () => {
           </div>
         </div>
       </Section>
-      {/* <ProductSingleSkeletonLoading /> */}
       <ModalAddedCart isModalOpen={showModal} />
     </div>
   );
