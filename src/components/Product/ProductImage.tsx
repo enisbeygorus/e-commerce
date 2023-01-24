@@ -12,10 +12,12 @@ const ProductImage = ({
 }: IProductImage) => {
   const stringToNavigate = `/products/${productUrl}`;
 
+  const aspectRation = "1 / 1.3";
+
   return (
     <div
-      style={{ aspectRatio: "1 / 1.5" }}
-      className="flex-1 relative flex justify-center items-center rounded-md bg-gray-200"
+      style={{ aspectRatio: aspectRation }}
+      className="overflow-hidden relative flex justify-center items-center rounded-md bg-gray-200"
     >
       <Link
         className="h-full flex justify-center items-center"

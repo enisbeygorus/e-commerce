@@ -228,6 +228,8 @@ export const productsData: Array<IProduct> = [
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-fermuar-detay-pelus-sweatshirt-06-c48.jpg",
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-fermuar-detay-pelus-sweatshirt-06-c48.jpg",
       "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-fermuar-detay-pelus-sweatshirt-06-c48.jpg",
+      "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-fermuar-detay-pelus-sweatshirt-06-c48.jpg",
+      "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-fermuar-detay-pelus-sweatshirt-06-c48.jpg",
     ],
     price: "250.55",
     productUrl: "erkek-fermuar-detay-pelus-sweatshirt",
