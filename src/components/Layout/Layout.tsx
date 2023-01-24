@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer";
 import Sidebar from "../Sidebar/Sidebar";
+import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 
 import Home from "../../screens/Home";
 import Products from "../../screens/Products";
@@ -36,6 +37,7 @@ const Layout = () => {
         toggleSideBarHandler={toggleSideBarHandler}
       />
       <Header toggleSideBarHandler={toggleSideBarHandler} />
+      <BreadCrumbs />
       <div>
         <Routes>
           <Route path={`/`} element={<Home />} />
