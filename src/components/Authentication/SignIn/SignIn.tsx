@@ -1,4 +1,20 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "../../Button/Button";
+import { SpinningLoading } from "../../Loading";
 const SignIn = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+  const signInHandler = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      // navigate("/");
+    }, 1500);
+  };
+
   return (
     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
       <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -13,6 +29,7 @@ const SignIn = () => {
             Your email
           </label>
           <input
+            defaultValue={"test@test.com"}
             autoComplete="current-email"
             type="email"
             name="email"
@@ -30,6 +47,7 @@ const SignIn = () => {
             Password
           </label>
           <input
+            defaultValue="123456"
             autoComplete="current-password"
             type="password"
             name="password"
@@ -47,7 +65,6 @@ const SignIn = () => {
                 aria-describedby="remember"
                 type="checkbox"
                 className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                required
               />
             </div>
             <div className="ml-3 text-sm">
@@ -66,12 +83,17 @@ const SignIn = () => {
             Forgot password?
           </a>
         </div>
-        <button
-          type="submit"
-          className="w-full  text-white bg-green-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-        >
-          Sign in
-        </button>
+        {loading ? (
+          <Button className="bg-gray-200 rounded-md w-full flex justify-center items-center py-0">
+            <SpinningLoading />
+          </Button>
+        ) : (
+          <Button
+            onClick={signInHandler}
+            text="Sign in"
+            className="w-full  text-white bg-green-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          />
+        )}
         {/* <p className="text-sm font-light text-gray-500 dark:text-gray-400">
           Don’t have an account yet?{" "}
           <a

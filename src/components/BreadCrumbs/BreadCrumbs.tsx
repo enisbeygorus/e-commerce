@@ -14,7 +14,7 @@ const BreadCrumbs = () => {
     return null;
   }
 
-  const splittedPathName = pathname.split("/");
+  const splittedPathName: Array<string> = pathname.split("/");
 
   const breadCrumbsContentHandler = () => {
     return (

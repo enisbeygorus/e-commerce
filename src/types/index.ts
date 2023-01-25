@@ -8,6 +8,7 @@ import {
 } from "./productTypes";
 
 import { ICartState } from "./reduxStoreTypes";
+import { IUser } from "./userTypes";
 
 export type {
   IProduct,
@@ -18,3 +19,4 @@ export type {
   IProductColor,
 };
 export type { ICartState };
+export type { IUser };
