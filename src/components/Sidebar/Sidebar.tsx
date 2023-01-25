@@ -11,7 +11,11 @@ const Sidebar = ({ showSideBar, toggleSideBarHandler }: ISidebar) => {
   const content = navigationData.map((navObj) => {
     return (
       <li className={"border-b "} key={navObj.name}>
-        <NavigationLink text={navObj.name} value={navObj.path} />
+        <NavigationLink
+          style={{ margin: 0, borderRadius: 0, paddingLeft: "16px" }}
+          text={navObj.name}
+          value={navObj.path}
+        />
       </li>
     );
   });

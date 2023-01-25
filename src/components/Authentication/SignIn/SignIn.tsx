@@ -2,16 +2,32 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../Button/Button";
 import { SpinningLoading } from "../../Loading";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../store/reducers/user";
+import { IUser } from "../../../types";
+
 const SignIn = () => {
   const [loading, setLoading] = useState<boolean>(false);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const signInHandler = () => {
+  const setUserHandler = () => {
+    const user: IUser = {
+      name: "Test",
+      isAdmin: false,
+      token: "12345es1sdgz",
+      userId: "12345",
+    };
+    dispatch(setUser(user));
+  };
+
+  const signInHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      // navigate("/");
+      setUserHandler();
+      navigate("/");
     }, 1500);
   };
 
@@ -20,7 +36,7 @@ const SignIn = () => {
       <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
         Sign in to your account
       </h1>
-      <form className="space-y-4 md:space-y-6" action="#">
+      <form className="space-y-4 md:space-y-6">
         <div>
           <label
             htmlFor="email"
@@ -47,7 +63,6 @@ const SignIn = () => {
             Password
           </label>
           <input
-            defaultValue="123456"
             autoComplete="current-password"
             type="password"
             name="password"

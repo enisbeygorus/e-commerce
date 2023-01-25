@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "../../types";
 import { IUserState } from "../../types/reduxStoreTypes";
+import { setLocal, LOCAL_STORAGE_SELECTORS } from "../../utils/localStorage";
 
 const initialUser: IUser | null = null;
 
@@ -13,11 +14,14 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<IUser>) => {
-      state.user = { ...state.user, ...action.payload };
+      const user = { ...state.user, ...action.payload };
+      state.user = user;
+
+      setLocal<IUser>(LOCAL_STORAGE_SELECTORS.user, user);
     },
   },
 });
 
-export const {} = userSlice.actions;
+export const { setUser } = userSlice.actions;
 
 export default userSlice.reducer;
