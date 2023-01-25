@@ -5,6 +5,8 @@ import CartItems from "../CartUI/CartItems";
 import SearchBar from "../SearchBar/SearchBar";
 import { useSelector } from "react-redux";
 import { ACTION_SELECTORS } from "../../store/actionSelectors";
+import LoginButton from "./LoginButton/LoginButton";
+import ProfileButton from "./ProfileButton/ProfileButton";
 
 interface IHeader {
   toggleSideBarHandler: () => void;
@@ -12,6 +14,7 @@ interface IHeader {
 
 const Header = ({ toggleSideBarHandler }: IHeader) => {
   const { amount: numberOfCartItems } = useSelector(ACTION_SELECTORS.getCart);
+  const { user } = useSelector(ACTION_SELECTORS.getUser);
 
   const numberOfCartHandler = (value: number) => {
     let text = "" + value;
@@ -75,11 +78,7 @@ const Header = ({ toggleSideBarHandler }: IHeader) => {
             </div>
           </div>
           <div className="flex items-center lg:order-2">
-            <Link to="/authetication">
-              <div className="cursor-pointer text-gray-800 dark:text-white hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
-                Log in
-              </div>
-            </Link>
+            {user ? <ProfileButton /> : <LoginButton />}
 
             <div
               id="header-cart-button-wrapper"
@@ -99,7 +98,6 @@ const Header = ({ toggleSideBarHandler }: IHeader) => {
               </Link>
               <div
                 id="header-cart-items-popup"
-                // style={{ width: "500px" }}
                 className="hidden absolute right-0 top-full bg-white pt-2 rounded-md"
               >
                 <div className="border-2 rounded-md h-full max-h-[24rem] overflow-auto">

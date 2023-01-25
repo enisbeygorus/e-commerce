@@ -1,7 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "../../types";
 import { IUserState } from "../../types/reduxStoreTypes";
-import { setLocal, LOCAL_STORAGE_SELECTORS } from "../../utils/localStorage";
+import {
+  setLocal,
+  removeLocal,
+  LOCAL_STORAGE_SELECTORS,
+} from "../../utils/localStorage";
 
 const initialUser: IUser | null = null;
 
@@ -13,11 +17,14 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<IUser>) => {
-      const user = { ...state.user, ...action.payload };
+    setUser: (state, action: PayloadAction<IUser | null>) => {
+      const user = action.payload ? { ...state.user, ...action.payload } : null;
       state.user = user;
-
-      setLocal<IUser>(LOCAL_STORAGE_SELECTORS.user, user);
+      if (user) {
+        setLocal<IUser>(LOCAL_STORAGE_SELECTORS.user, user);
+      } else {
+        removeLocal(LOCAL_STORAGE_SELECTORS.user);
+      }
     },
   },
 });

@@ -5,6 +5,9 @@ export const LOCAL_STORAGE_SELECTORS = {
 export function setLocal<Type>(localName: string, data: Type) {
   localStorage.setItem(localName, JSON.stringify(data));
 }
+export function removeLocal(localName: string) {
+  localStorage.removeItem(localName);
+}
 
 export function getLocal(localName: string) {
   const data = localStorage.getItem(localName);
