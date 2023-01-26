@@ -47,9 +47,9 @@ const cartSlice = createSlice({
       });
       if (cartItem) {
         state.amount -= cartItem.amount;
-        state.cartItems = state.cartItems.filter(
-          (item: ICartItem) => item.id !== action.payload
-        );
+        state.cartItems = state.cartItems.filter((item: ICartItem) => {
+          return item.id !== action.payload;
+        });
       }
     },
     updateItem: (state, action: PayloadAction<ICartItem>) => {
@@ -58,6 +58,10 @@ const cartSlice = createSlice({
       );
       if (cartItem) {
         const indexOfCart = state.cartItems.indexOf(cartItem);
+        const diffAmount =
+          action.payload.amount - state.cartItems[indexOfCart].amount;
+
+        state.amount += diffAmount;
         state.cartItems[indexOfCart] = action.payload;
       }
     },

@@ -72,7 +72,7 @@ export const productsData: Array<IProduct> = [
     productUrl: "erkek-gri-örme-yarım-fermuar-oversize-sweatshirt",
     sizes: {
       allProductSizes: ["s", "m", "l", "xl"],
-      availableSizes: ["m", "l"],
+      availableSizes: ["s", "m", "l"],
     },
     availableColors: [
       {
@@ -105,7 +105,7 @@ export const productsData: Array<IProduct> = [
     price: "250.55",
     sizes: {
       allProductSizes: ["s", "m", "l", "xl"],
-      availableSizes: ["m", "l"],
+      availableSizes: ["s", "m", "l"],
     },
     availableColors: [
       {

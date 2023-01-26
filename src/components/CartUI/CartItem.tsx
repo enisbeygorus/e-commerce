@@ -69,7 +69,7 @@ const CartItem = ({ item, isHeaderPopup }: ICartItemComp) => {
                 <Dropdown
                   onChange={amountChangeHandler}
                   buttonClassName="py-0 sm:py-0.5"
-                  defaultSelectedId={item.amount.toString()}
+                  value={item.amount.toString()}
                   data={Array.from(Array(20).keys()).map((val) => {
                     val++;
                     return { id: val.toString(), value: val.toString() };

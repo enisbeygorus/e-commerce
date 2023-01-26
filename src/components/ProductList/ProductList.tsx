@@ -9,7 +9,7 @@ const ProductList = () => {
   useEffect(() => {
     setTimeout(() => {
       setProducts(productsData);
-    }, 1000);
+    }, 100);
   }, []);
 
   const content = products.map((product, index) => {

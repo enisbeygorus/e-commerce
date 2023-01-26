@@ -9,7 +9,8 @@ const BreadCrumbs = () => {
   if (
     pathname === "/" ||
     pathname === "/cart" ||
-    pathname === "/authetication"
+    pathname === "/authetication" ||
+    pathname.includes("/profile")
   ) {
     return null;
   }

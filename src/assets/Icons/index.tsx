@@ -5,6 +5,7 @@ import ShoppingCartIcon from "./ShoppingCartIcon";
 import SearchIcon from "./SearchIcon";
 import CloseIcon from "./CloseIcon";
 import ProfileIcon from "./ProfileIcon";
+import VerifiedIcon from "./VerifiedIcon";
 
 export {
   HeartIcon,
@@ -14,4 +15,5 @@ export {
   SearchIcon,
   CloseIcon,
   ProfileIcon,
+  VerifiedIcon,
 };

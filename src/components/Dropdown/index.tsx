@@ -7,7 +7,7 @@ interface IDataItem {
 
 interface IDropdown {
   data: Array<IDataItem>;
-  defaultSelectedId: string;
+  value: string;
   onChange?: (id: string, value: string) => void;
   buttonClassName?: string;
 }
@@ -16,17 +16,16 @@ const Dropdown = ({
   buttonClassName = "px-4 py-1",
   data,
   onChange,
-  defaultSelectedId,
+  value,
 }: IDropdown) => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
-  const [_seletedId, _setSelectedId] = useState<string>(defaultSelectedId);
 
   const toggleDropDown = () => {
     setShowDropDown((prev) => !prev);
   };
 
   const selectItem = (id: string, value: string) => {
-    _setSelectedId(value);
+    // _setSelectedId(value);
     setShowDropDown(false);
     if (onChange) {
       onChange(id, value);
@@ -58,9 +57,7 @@ const Dropdown = ({
         // className="px-4 py-1 relative w-full flex focus:outline-none text-white bg-gray-700 hover:bg-gray-800  font-medium rounded-lg text-sm text-center items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         type="button"
       >
-        <div className="flex-1">
-          {data.find((obj) => obj.id === _seletedId)?.value}
-        </div>
+        <div className="flex-1">{value}</div>
         <svg
           className="w-4 h-4 ml-2"
           aria-hidden="true"

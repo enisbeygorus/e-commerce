@@ -17,17 +17,20 @@ export interface ISizes {
   availableSizes: Array<string>;
 }
 
-export interface IProduct {
+export interface IProductCore {
   id: string;
   productUrl: string;
   title: string;
   imageUrls: Array<string>;
   price: string;
+  discountPrice: string;
+}
+
+export interface IProduct extends IProductCore {
   sizes: ISizes;
   availableColors: Array<IAvailableColors>;
   categoryName: string;
   clotheModel: string;
-  discountPrice: string;
   isFavorite: boolean;
   currency: string;
   deliverTime: string;
@@ -50,5 +53,5 @@ export type IProductDetail = Pick<
 
 export type ICartItem = Pick<
   IProduct,
-  "id" | "title" | "price" | "currency" | "discountPrice" | "productUrl"
-> & { color: string; size: string; amount: number };
+  "title" | "price" | "currency" | "discountPrice" | "productUrl"
+> & { id: string; color: string; size: string; amount: number };

@@ -19,13 +19,13 @@ const CartItems = ({ isHeaderPopup = false }: ICartItems) => {
       </div>
     );
   }
-  const cartItem = cartItems.map((item, index) => {
+  const content = cartItems.map((item, index) => {
     return <CartItem key={index} item={item} isHeaderPopup={isHeaderPopup} />;
   });
 
   return (
     <div style={{ width: isHeaderPopup ? "500px" : "" }}>
-      <ul>{cartItem}</ul>
+      <ul>{content}</ul>
     </div>
   );
 };

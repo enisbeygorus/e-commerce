@@ -11,6 +11,7 @@ import Products from "../../screens/Products";
 import ProductSingle from "../../screens/ProductSingle";
 import Cart from "../../screens/Cart";
 import Authetication from "../../screens/Authetication";
+import Profile from "../../screens/Profile";
 
 import ScrollToTop from "../../hooks/useScrollTop";
 import CloseSideBar from "../../hooks/CloseSideBar";
@@ -44,6 +45,9 @@ const Layout = () => {
           <Route path={`/cart`} element={<Cart />} />
           <Route path={`/authetication`} element={<Authetication />} />
           <Route path={`/:name`} element={<Products />} />
+          {/* routes after login */}
+          <Route path={`/profile`} element={<Profile />} />
+          <Route path={`/profile/:profileTab`} element={<Profile />} />
           <Route path={`/products/:productName`} element={<ProductSingle />} />
         </Routes>
       </div>

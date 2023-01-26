@@ -66,7 +66,7 @@ const ProductSingle = () => {
 
         window.scrollTo(0, 0);
       }
-    }, 1500);
+    }, 100);
   }, [productName]);
 
   const sizeSelectHandler = (value: string) => {
@@ -79,7 +79,7 @@ const ProductSingle = () => {
 
   const addToCartHandler = () => {
     const newCart: ICartItem = {
-      id,
+      id: id + sizeSelected,
       amount: itemCount,
       color: "black",
       currency,
