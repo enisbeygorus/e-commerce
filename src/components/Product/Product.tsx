@@ -8,7 +8,7 @@ import "./Product.css";
 import { IProduct } from "../../types";
 
 export interface IProductComponent {
-  product: IProduct;
+  product: IProduct | null;
 }
 
 const Product = ({ product }: IProductComponent) => {
