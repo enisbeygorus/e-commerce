@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { ACTION_SELECTORS } from "../../store/actionSelectors";
 import LoginButton from "./LoginButton/LoginButton";
 import ProfileButton from "./ProfileButton/ProfileButton";
+import FavoriteButton from "./FavoriteButton/FavoriteButton";
 
 interface IHeader {
   toggleSideBarHandler: () => void;
@@ -79,6 +80,8 @@ const Header = ({ toggleSideBarHandler }: IHeader) => {
           </div>
           <div className="flex items-center lg:order-2">
             {user ? <ProfileButton /> : <LoginButton />}
+
+            <FavoriteButton />
 
             <div
               id="header-cart-button-wrapper"

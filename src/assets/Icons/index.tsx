@@ -6,6 +6,7 @@ import SearchIcon from "./SearchIcon";
 import CloseIcon from "./CloseIcon";
 import ProfileIcon from "./ProfileIcon";
 import VerifiedIcon from "./VerifiedIcon";
+import ErrorIcon from "./ErrorIcon";
 
 export {
   HeartIcon,
@@ -16,4 +17,5 @@ export {
   CloseIcon,
   ProfileIcon,
   VerifiedIcon,
+  ErrorIcon,
 };
