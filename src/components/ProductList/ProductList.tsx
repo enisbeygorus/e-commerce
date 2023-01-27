@@ -7,9 +7,10 @@ import { IProduct } from "../../types";
 
 interface IProductList {
   productsData: Array<IProduct | null>;
+  showFilters?: boolean;
 }
 
-const ProductList = ({ productsData }: IProductList) => {
+const ProductList = ({ productsData, showFilters = true }: IProductList) => {
   const [products, setProducts] = useState<Array<IProduct | null>>(
     new Array(6).fill(null)
   );
@@ -40,9 +41,11 @@ const ProductList = ({ productsData }: IProductList) => {
   return (
     <div className="w-full px-2 md:w-11/12 max-w-[1250px] m-auto">
       <div className="content flex w-full">
-        <div className="hidden lg:block w-52 filter">
-          <Filters />
-        </div>
+        {showFilters ? (
+          <div className="hidden lg:block w-52 filter">
+            <Filters />
+          </div>
+        ) : null}
         <div className="products flex-1">
           <div className="flex justify-end pr-4">
             <Sort />

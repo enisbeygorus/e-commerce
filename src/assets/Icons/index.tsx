@@ -7,6 +7,7 @@ import CloseIcon from "./CloseIcon";
 import ProfileIcon from "./ProfileIcon";
 import VerifiedIcon from "./VerifiedIcon";
 import ErrorIcon from "./ErrorIcon";
+import AngleDownIcon from "./AngleDownIcon";
 
 export {
   HeartIcon,
@@ -18,4 +19,5 @@ export {
   ProfileIcon,
   VerifiedIcon,
   ErrorIcon,
+  AngleDownIcon,
 };

@@ -15,7 +15,7 @@ const FavoriteProducts = () => {
     });
   }, []);
 
-  return <ProductList productsData={favoriteProducts} />;
+  return <ProductList showFilters={false} productsData={favoriteProducts} />;
 };
 
 export default FavoriteProducts;

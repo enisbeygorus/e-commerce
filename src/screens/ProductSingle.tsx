@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, ScrollRestoration } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItem } from "../store/reducers/cart";
 

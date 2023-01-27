@@ -41,7 +41,7 @@ const ProfileLinks = ({ className }: IProfileLinks) => {
 
   return (
     <div
-      className={`flex flex-col text-sm w-48  rounded-md h-full max-h-[24rem] overflow-auto ${className}`}
+      className={`flex text-sm  rounded-md h-full max-h-[24rem] overflow-auto ${className}`}
     >
       {content}
     </div>

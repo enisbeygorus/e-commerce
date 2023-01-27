@@ -10,8 +10,9 @@ import ScrollToTop from "../../hooks/useScrollTop";
 import CloseSideBar from "../../hooks/CloseSideBar";
 
 import { externalRoutes, internalRoutes } from "../../routes";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ACTION_SELECTORS } from "../../store/actionSelectors";
+import { getLocal, LOCAL_STORAGE_SELECTORS } from "../../utils/localStorage";
 
 // import Category from "../../screens/Category";
 
@@ -26,6 +27,14 @@ const Layout = () => {
     }
     setShowSideBar((prev) => !prev);
   }, []);
+
+  const navigateLogin = () => {
+    if (user || getLocal(LOCAL_STORAGE_SELECTORS.user)) {
+      return false;
+    }
+
+    return true;
+  };
 
   return (
     <div className="text-gray-700">
@@ -54,7 +63,7 @@ const Layout = () => {
                 key={routeObj.path}
                 path={routeObj.path}
                 element={
-                  user ? (
+                  !navigateLogin() ? (
                     <routeObj.component />
                   ) : (
                     <Navigate to="/login" replace={true} />

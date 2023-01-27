@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ProductImage from "./ProductImage";
 import ProductDetail from "./ProductDetail";
-import { isMobile } from "../../utils";
+// import { isMobile } from "../../utils";
 import { SkeletonLoading } from "../Loading";
 import { calculateDiscountPercentange } from "../../utils";
 import "./Product.css";

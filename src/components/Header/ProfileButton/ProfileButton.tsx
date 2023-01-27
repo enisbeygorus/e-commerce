@@ -20,7 +20,7 @@ const ProfileButton = () => {
         id="header-profile-list"
         className="header-profile-list hidden absolute left-1/2 -translate-x-1/2 top-full bg-white  pt-2 rounded-md"
       >
-        <ProfileLinks className="border-2 p-4" />
+        <ProfileLinks className="border-2 p-4 flex-col w-48" />
       </div>
     </div>
   );

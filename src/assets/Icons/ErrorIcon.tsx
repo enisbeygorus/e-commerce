@@ -39,7 +39,7 @@ const ErrorIcon = (props: IconProps) => {
             opacity: "1",
           }}
           transform=" matrix(1 0 0 1 0 0) "
-          stroke-linecap="round"
+          strokeLinecap="round"
         />
         <path
           d="M 28.902 66.098 c -1.28 0 -2.559 -0.488 -3.536 -1.465 c -1.953 -1.952 -1.953 -5.118 0 -7.07 l 32.196 -32.196 c 1.951 -1.952 5.119 -1.952 7.07 0 c 1.953 1.953 1.953 5.119 0 7.071 L 32.438 64.633 C 31.461 65.609 30.182 66.098 28.902 66.098 z"
@@ -55,7 +55,7 @@ const ErrorIcon = (props: IconProps) => {
             opacity: "1",
           }}
           transform=" matrix(1 0 0 1 0 0) "
-          stroke-linecap="round"
+          strokeLinecap="round"
         />
         <path
           d="M 61.098 66.098 c -1.279 0 -2.56 -0.488 -3.535 -1.465 L 25.367 32.438 c -1.953 -1.953 -1.953 -5.119 0 -7.071 c 1.953 -1.952 5.118 -1.952 7.071 0 l 32.195 32.196 c 1.953 1.952 1.953 5.118 0 7.07 C 63.657 65.609 62.377 66.098 61.098 66.098 z"
@@ -71,7 +71,7 @@ const ErrorIcon = (props: IconProps) => {
             opacity: "1",
           }}
           transform=" matrix(1 0 0 1 0 0) "
-          stroke-linecap="round"
+          strokeLinecap="round"
         />
       </g>
     </svg>
