@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ACTION_SELECTORS } from "../store/actionSelectors";
 import { setUser } from "../store/reducers/user";
@@ -15,7 +15,7 @@ function useLoginUserAuto() {
         dispatch(setUser(localUser));
       }
     }
-  }, [user]);
+  }, [user, dispatch]);
 
   return null;
 }

@@ -5,6 +5,7 @@ import ProfileLinks from "../components/ProfileLinks";
 import { useParams } from "react-router-dom";
 import FavoriteProducts from "../components/FavoriteProducts/FavoriteProducts";
 import { AngleDownIcon } from "../assets/Icons";
+import AddAddress from "../components/Contact/AddAddress";
 
 const Profile = () => {
   const { profileTab } = useParams();
@@ -30,6 +31,9 @@ const Profile = () => {
 
     if (profileTab === "favorites") {
       return <FavoriteProducts />;
+    }
+    if (profileTab === "adresses") {
+      return <AddAddress />;
     }
 
     return <Orders />;

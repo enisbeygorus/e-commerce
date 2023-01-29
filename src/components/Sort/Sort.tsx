@@ -12,7 +12,7 @@ const Sort = () => {
   // const [showDropDown, setShowDropDown] = useState<boolean>(false);
   // const [seletedValue, setSelectedValue] = useState<number>(0);
 
-  return <Dropdown data={sortData} value={sortData[0].id} />;
+  return <Dropdown data={sortData} value={sortData[0].value} />;
 };
 
 export default Sort;

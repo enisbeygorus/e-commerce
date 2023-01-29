@@ -91,12 +91,12 @@ const SignIn = () => {
               </label>
             </div>
           </div>
-          <a
+          {/* <a
             href="#"
             className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
           >
             Forgot password?
-          </a>
+          </a> */}
         </div>
         {loading ? (
           <Button className="bg-gray-200 rounded-md w-full flex justify-center items-center py-0">

@@ -12,7 +12,7 @@ const Products = () => {
     setTimeout(() => {
       setProducts(productsData);
     }, 100);
-  }, [productsData]);
+  }, []);
 
   return <ProductList productsData={products} />;
 };

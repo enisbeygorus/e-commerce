@@ -16,11 +16,15 @@ const Dropdown = ({
   buttonClassName = "px-4 py-1",
   data,
   onChange,
-  value,
+  value = "",
 }: IDropdown) => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
 
-  const toggleDropDown = () => {
+  const toggleDropDown = (value?: boolean) => {
+    if (typeof value === "boolean") {
+      setShowDropDown(value);
+      return;
+    }
     setShowDropDown((prev) => !prev);
   };
 
@@ -34,12 +38,12 @@ const Dropdown = ({
 
   const sortItem = (listItem: IDataItem, index: number) => (
     <li key={index}>
-      <button
+      <div
         onClick={() => selectItem(listItem.id, listItem.value)}
-        className="block w-full text-center px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        className="block w-full cursor-pointer text-center px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
       >
         {listItem.value}
-      </button>
+      </div>
     </li>
   );
 
@@ -47,14 +51,18 @@ const Dropdown = ({
     return sortItem(listItem, index);
   });
 
+  const focusLost = () => {
+    toggleDropDown(false);
+  };
+
   return (
     <div className="relative min-w-[96px]">
       <button
-        onClick={toggleDropDown}
+        onBlur={focusLost}
+        onClick={() => toggleDropDown()}
         id="dropdownDefaultButton"
         data-dropdown-toggle="dropdown"
         className={`relative w-full flex focus:outline-none text-gray-700 bg-white border-2 border-gray-400  font-medium rounded-lg text-sm text-center items-center ${buttonClassName}`}
-        // className="px-4 py-1 relative w-full flex focus:outline-none text-white bg-gray-700 hover:bg-gray-800  font-medium rounded-lg text-sm text-center items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         type="button"
       >
         <div className="flex-1">{value}</div>

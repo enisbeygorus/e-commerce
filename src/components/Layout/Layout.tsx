@@ -10,7 +10,7 @@ import ScrollToTop from "../../hooks/useScrollTop";
 import CloseSideBar from "../../hooks/CloseSideBar";
 
 import { externalRoutes, internalRoutes } from "../../routes";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { ACTION_SELECTORS } from "../../store/actionSelectors";
 import { getLocal, LOCAL_STORAGE_SELECTORS } from "../../utils/localStorage";
 
