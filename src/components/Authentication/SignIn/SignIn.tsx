@@ -17,6 +17,7 @@ const SignIn = () => {
       isAdmin: false,
       token: "12345es1sdgz",
       userId: "12345",
+      adresses: [],
     };
     dispatch(setUser(user));
   };

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { TrashCanIcon } from "../../assets/Icons";
 import { ICartItem } from "../../types";
-import Dropdown from "../Dropdown";
+import { ReactSelect, SelectOptionType } from "../Dropdown/ReactSelect";
 import { useDispatch } from "react-redux";
 import { removeItem, updateItem } from "../../store/reducers/cart";
 
@@ -17,8 +17,8 @@ const CartItem = ({ item, isHeaderPopup }: ICartItemComp) => {
     dispatch(removeItem(id));
   };
 
-  const amountChangeHandler = (id: string, value: string) => {
-    const parsedValue = parseInt(value);
+  const amountChangeHandler = (option: SelectOptionType) => {
+    const parsedValue = parseInt(option.value);
     const newCartItem: ICartItem = { ...item, amount: parsedValue };
 
     dispatch(updateItem(newCartItem));
@@ -66,14 +66,18 @@ const CartItem = ({ item, isHeaderPopup }: ICartItemComp) => {
           <div className="flex flex-1 justify-between md:justify-around">
             {!isHeaderPopup ? (
               <div className="flex justify-center items-center">
-                <Dropdown
+                <ReactSelect
                   onChange={amountChangeHandler}
-                  buttonClassName="py-0 sm:py-0.5"
-                  value={item.amount.toString()}
-                  data={Array.from(Array(20).keys()).map((val) => {
+                  wrapperStyle={{ padding: "0 4px" }}
+                  // value={item.amount.toString()}
+                  options={Array.from(Array(20).keys()).map((val) => {
                     val++;
-                    return { id: val.toString(), value: val.toString() };
+                    return { value: val.toString(), label: val.toString() };
                   })}
+                  defaultValue={{
+                    value: item.amount.toString(),
+                    label: item.amount.toString(),
+                  }}
                 />
               </div>
             ) : null}

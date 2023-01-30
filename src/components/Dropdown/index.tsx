@@ -19,7 +19,6 @@ const Dropdown = ({
   value = "",
 }: IDropdown) => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
-
   const toggleDropDown = (value?: boolean) => {
     if (typeof value === "boolean") {
       setShowDropDown(value);
@@ -29,36 +28,34 @@ const Dropdown = ({
   };
 
   const selectItem = (id: string, value: string) => {
-    // _setSelectedId(value);
     setShowDropDown(false);
     if (onChange) {
       onChange(id, value);
     }
   };
 
-  const sortItem = (listItem: IDataItem, index: number) => (
-    <li key={index}>
-      <div
-        onClick={() => selectItem(listItem.id, listItem.value)}
-        className="block w-full cursor-pointer text-center px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-      >
-        {listItem.value}
-      </div>
-    </li>
-  );
+  const sortItem = (listItem: IDataItem, index: number) => {
+    return (
+      <li key={index}>
+        <div
+          onClick={() => selectItem(listItem.id, listItem.value)}
+          className="block w-full cursor-pointer text-center px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >
+          {listItem.value}
+        </div>
+      </li>
+    );
+  };
 
   const sortList = data.map((listItem, index) => {
     return sortItem(listItem, index);
   });
 
-  const focusLost = () => {
-    toggleDropDown(false);
-  };
+  const focusLost = () => {};
 
   return (
-    <div className="relative min-w-[96px]">
+    <div onBlur={focusLost} className="relative min-w-[96px]">
       <button
-        onBlur={focusLost}
         onClick={() => toggleDropDown()}
         id="dropdownDefaultButton"
         data-dropdown-toggle="dropdown"

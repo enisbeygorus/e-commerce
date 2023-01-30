@@ -78,7 +78,7 @@ const Header = ({ toggleSideBarHandler }: IHeader) => {
               <SearchBar />
             </div>
           </div>
-          <div className="flex items-center lg:order-2">
+          <div className="z-30 flex items-center lg:order-2">
             {user ? <ProfileButton /> : <LoginButton />}
 
             <FavoriteButton />

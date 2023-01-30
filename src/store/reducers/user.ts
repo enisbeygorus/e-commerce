@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../../types";
+import { IUser, IAddress } from "../../types";
 import { IUserState } from "../../types/reduxStoreTypes";
 import {
   setLocal,
@@ -25,6 +25,10 @@ const userSlice = createSlice({
       } else {
         removeLocal(LOCAL_STORAGE_SELECTORS.user);
       }
+    },
+    setAddress: (state, action: PayloadAction<IAddress | null>) => {
+      if (!state.user || !action.payload) return;
+      state.user.adresses = [...state.user.adresses, action.payload];
     },
   },
 });

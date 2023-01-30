@@ -1,22 +1,16 @@
-import Dropdown from "../Dropdown";
 import InputMask from "react-input-mask";
 import Input from "../Input/Input";
 import { useState } from "react";
 import Button from "../Button/Button";
-
-interface Address {
-  name: string;
-  lastName: string;
-  phone: string;
-  country: string;
-  city: string;
-  district: string;
-  fullAddress: string;
-  adddressTitle: string;
-}
+import { IAddress } from "../../types/userTypes";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/reducers/user";
+import { ReactSelect, SelectOptionType } from "../Dropdown/ReactSelect";
 
 const AddAddress = () => {
-  const [addresseInfo, setAddresseInfo] = useState<Address>({
+  const dispatch = useDispatch();
+
+  const [addresseInfo, setAddresseInfo] = useState<IAddress>({
     name: "",
     adddressTitle: "",
     city: "",
@@ -29,6 +23,8 @@ const AddAddress = () => {
 
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("submit");
+    // dispatch(setUser(user));
   };
 
   const setAddresseInfoHandler = (propertyName: string, value: string) => {
@@ -44,14 +40,14 @@ const AddAddress = () => {
     setAddresseInfoHandler(e.currentTarget.name, e.currentTarget.value);
   };
 
-  const countryDropDownOnChange = (id: string) => {
-    setAddresseInfoHandler("country", id);
+  const countryDropDownOnChange = (option: SelectOptionType) => {
+    setAddresseInfoHandler("country", option.value);
   };
-  const cityDropDownOnChange = (id: string, value: string) => {
-    setAddresseInfoHandler("city", id);
+  const cityDropDownOnChange = (option: SelectOptionType) => {
+    setAddresseInfoHandler("city", option.value);
   };
-  const districtDropDownOnChange = (id: string, value: string) => {
-    setAddresseInfoHandler("district", id);
+  const districtDropDownOnChange = (option: SelectOptionType) => {
+    setAddresseInfoHandler("district", option.value);
   };
 
   return (
@@ -96,35 +92,52 @@ const AddAddress = () => {
           </div>
           <div className="flex-1 px-2">
             <div>Country</div>
-            <Dropdown
-              buttonClassName="p-2 bg-gray-50 border border-gray-300 h-11"
+            <ReactSelect
+              wrapperStyle={{
+                backgroundColor: "#f9fafb",
+                height: "44px",
+                borderRadius: "8px",
+              }}
+              options={[
+                { value: "chocolate", label: "Chocolate" },
+                { value: "strawberry", label: "Strawberry" },
+                { value: "vanilla", label: "Vanilla" },
+              ]}
               onChange={countryDropDownOnChange}
-              data={[{ id: "turkey", value: "Turkey" }]}
-              value={"Turkey"}
             />
           </div>
         </div>
         <div className="flex mb-4">
           <div className="flex-1 px-2">
             <div>City</div>
-            <Dropdown
-              buttonClassName="px-4 py-1 bg-gray-50 border border-gray-300 h-11"
+            <ReactSelect
+              wrapperStyle={{
+                backgroundColor: "#f9fafb",
+                height: "44px",
+                borderRadius: "8px",
+              }}
+              options={[
+                { value: "chocolate", label: "Chocolate" },
+                { value: "strawberry", label: "Strawberry" },
+                { value: "vanilla", label: "Vanilla" },
+              ]}
               onChange={cityDropDownOnChange}
-              data={[{ id: "istanbul", value: "istanbul" }]}
-              value={""}
             />
           </div>
           <div className="flex-1 px-2">
             <div>District</div>
-            <Dropdown
-              buttonClassName="px-4 py-1 bg-gray-50 border border-gray-300 h-11"
-              onChange={districtDropDownOnChange}
-              data={[
-                { id: "şişli", value: "şişli" },
-                { id: "beşiktaş", value: "beşiktaş" },
-                { id: "kağıthane", value: "kağıthane" },
+            <ReactSelect
+              wrapperStyle={{
+                backgroundColor: "#f9fafb",
+                height: "44px",
+                borderRadius: "8px",
+              }}
+              options={[
+                { value: "chocolate", label: "Chocolate" },
+                { value: "strawberry", label: "Strawberry" },
+                { value: "vanilla", label: "Vanilla" },
               ]}
-              value={""}
+              onChange={districtDropDownOnChange}
             />
           </div>
         </div>
