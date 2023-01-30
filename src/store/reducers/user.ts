@@ -29,10 +29,11 @@ const userSlice = createSlice({
     setAddress: (state, action: PayloadAction<IAddress | null>) => {
       if (!state.user || !action.payload) return;
       state.user.adresses = [...state.user.adresses, action.payload];
+      setLocal<IUser>(LOCAL_STORAGE_SELECTORS.user, state.user);
     },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, setAddress } = userSlice.actions;
 
 export default userSlice.reducer;

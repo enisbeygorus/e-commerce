@@ -4,7 +4,7 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import { IAddress } from "../../types/userTypes";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../store/reducers/user";
+import { setAddress } from "../../store/reducers/user";
 import { ReactSelect, SelectOptionType } from "../Dropdown/ReactSelect";
 
 const AddAddress = () => {
@@ -21,13 +21,26 @@ const AddAddress = () => {
     phone: "",
   });
 
+  const [isValid, setIsValid] = useState<boolean>(true);
+
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("submit");
-    // dispatch(setUser(user));
+    const isFormValid = !(
+      Object.keys(addresseInfo) as Array<keyof typeof addresseInfo>
+    ).some((key) => {
+      return addresseInfo[key] === "";
+    });
+
+    if (!isFormValid) {
+      setIsValid(false);
+      return;
+    }
+    dispatch(setAddress(addresseInfo));
   };
 
   const setAddresseInfoHandler = (propertyName: string, value: string) => {
+    setIsValid(true);
+
     setAddresseInfo((prev) => {
       return { ...prev, [propertyName]: value };
     });
@@ -148,17 +161,24 @@ const AddAddress = () => {
             name="fullAddress"
           />
         </div>
-        <div className="px-2 mb-8">
+        <div className="px-2 mb-2">
           <label>Address Title</label>
           <Input
             onChange={inputOnChangeHandler}
             autoComplete="current-addressTitle"
             type="text"
-            name="addressTitle"
-            id="addressTitle"
+            name="adddressTitle"
+            id="adddressTitle"
             placeholder="address title"
             required
           />
+        </div>
+        <div
+          className={`px-2 mb-2 text-red-500 font-bold ${
+            isValid ? "opacity-0" : ""
+          } `}
+        >
+          Please fill all fields
         </div>
         <div className="flex justify-end px-2">
           <Button
