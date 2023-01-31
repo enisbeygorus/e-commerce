@@ -5,7 +5,7 @@ import ProfileLinks from "../components/ProfileLinks";
 import { useParams } from "react-router-dom";
 import FavoriteProducts from "../components/FavoriteProducts/FavoriteProducts";
 import { AngleDownIcon } from "../assets/Icons";
-import AddAddress from "../components/Contact/AddAddress";
+import AddressList from "../components/Address/AddressList";
 
 const Profile = () => {
   const { profileTab } = useParams();
@@ -33,7 +33,7 @@ const Profile = () => {
       return <FavoriteProducts />;
     }
     if (profileTab === "adresses") {
-      return <AddAddress />;
+      return <AddressList />;
     }
 
     return <Orders />;
@@ -55,7 +55,7 @@ const Profile = () => {
           <div className="border-b border-gray-400 md:hidden">{profileTab}</div>
         </div>
         <div
-          className={` px-2 rounded-md mb-2 overflow-hidden ${
+          className={` px-2 rounded-md mb-2 md:mb-0 overflow-hidden ${
             shoMobileDropDownMenu ? "" : "h-0"
           }`}
         >

@@ -76,9 +76,9 @@ const Order = ({ order }: IOrderFC) => {
         </div>
         <div>{paymentMethod}</div>
       </div>
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <button className="p-2 border rounded-md">d</button>
-      </div>
+      </div> */}
     </div>
   );
 };
