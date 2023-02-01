@@ -28,12 +28,20 @@ const userSlice = createSlice({
     },
     setAddress: (state, action: PayloadAction<IAddress | null>) => {
       if (!state.user || !action.payload) return;
-      state.user.adresses = [...state.user.adresses, action.payload];
+      state.user.addresses = [...state.user.addresses, action.payload];
       setLocal<IUser>(LOCAL_STORAGE_SELECTORS.user, state.user);
+    },
+
+    deleteAddress: (state, action: PayloadAction<string>) => {
+      if (!state.user || !action.payload) return;
+      if (state.user.addresses.length < 1) return;
+      state.user.addresses = state.user.addresses.filter(
+        (address) => address.addressId === action.payload
+      );
     },
   },
 });
 
-export const { setUser, setAddress } = userSlice.actions;
+export const { setUser, setAddress, deleteAddress } = userSlice.actions;
 
 export default userSlice.reducer;

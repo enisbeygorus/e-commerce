@@ -1,16 +1,31 @@
 import InputMask from "react-input-mask";
 import Input from "../Input/Input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import { IAddress } from "../../types/userTypes";
 import { useDispatch } from "react-redux";
 import { setAddress } from "../../store/reducers/user";
 import { ReactSelect, SelectOptionType } from "../Dropdown/ReactSelect";
 
-const AddAddress = () => {
+interface IAddAddress {
+  onSuccess: () => void;
+  onFail: () => void;
+  onSubmitStart: () => void;
+  address?: IAddress | null;
+}
+
+const AddAddress = ({
+  onSubmitStart,
+  onSuccess,
+  address,
+  onFail,
+}: IAddAddress) => {
   const dispatch = useDispatch();
 
-  const [addresseInfo, setAddresseInfo] = useState<IAddress>({
+  console.log("address:", address);
+
+  const [addressInfo, setAddresseInfo] = useState<IAddress>({
+    addressId: "",
     name: "",
     adddressTitle: "",
     city: "",
@@ -23,19 +38,43 @@ const AddAddress = () => {
 
   const [isValid, setIsValid] = useState<boolean>(true);
 
+  useEffect(() => {
+    if (address) {
+      setAddresseInfo(address);
+    }
+  }, [address]);
+
+  // console.log("addressInfo:", addressInfo);
+
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     const isFormValid = !(
-      Object.keys(addresseInfo) as Array<keyof typeof addresseInfo>
+      Object.keys(addressInfo) as Array<keyof typeof addressInfo>
     ).some((key) => {
-      return addresseInfo[key] === "";
+      if (key !== "addressId") {
+        return addressInfo[key] === "";
+      }
+      return false;
     });
 
     if (!isFormValid) {
       setIsValid(false);
       return;
     }
-    dispatch(setAddress(addresseInfo));
+
+    onSubmitStart();
+    setTimeout(() => {
+      onSuccess();
+    }, 2000);
+
+    // onFail();
+
+    const _addresseInfo = {
+      ...addressInfo,
+      addressId: Math.floor(Math.random() * 1000000).toString(),
+    };
+
+    dispatch(setAddress(_addresseInfo));
   };
 
   const setAddresseInfoHandler = (propertyName: string, value: string) => {
@@ -65,11 +104,16 @@ const AddAddress = () => {
 
   return (
     <div>
+      <div className="px-4 text-xl text-black font-semibold mb-2">
+        Add Address
+      </div>
+      <hr />
       <form className="px-2" onSubmit={onSubmitHandler}>
         <div className="flex mb-4">
           <div className="flex-1 px-2">
             <label>Name</label>
             <Input
+              defaultValue={addressInfo.name}
               onChange={inputOnChangeHandler}
               autoComplete="current-name"
               type="text"
@@ -82,6 +126,7 @@ const AddAddress = () => {
           <div className="flex-1 px-2">
             <label>Last Name</label>
             <Input
+              defaultValue={addressInfo.lastName}
               onChange={inputOnChangeHandler}
               autoComplete="current-lastName"
               type="text"
@@ -96,6 +141,7 @@ const AddAddress = () => {
           <div className="flex-1 px-2">
             <div>Phone</div>
             <InputMask
+              defaultValue={addressInfo.phone}
               onChange={inputOnChangeHandler}
               name="phone"
               className="bg-gray-50 border border-gray-300 rounded-md w-full p-2 h-11"
@@ -156,6 +202,7 @@ const AddAddress = () => {
         </div>
         <div className="flex mb-4 px-2">
           <textarea
+            defaultValue={addressInfo.fullAddress}
             onChange={textAreaOnChangeHandler}
             className="h-16 text-sm px-1 py-2 rounded-md border border-gray-300 w-full"
             name="fullAddress"
@@ -164,6 +211,7 @@ const AddAddress = () => {
         <div className="px-2 mb-2">
           <label>Address Title</label>
           <Input
+            defaultValue={addressInfo.adddressTitle}
             onChange={inputOnChangeHandler}
             autoComplete="current-addressTitle"
             type="text"

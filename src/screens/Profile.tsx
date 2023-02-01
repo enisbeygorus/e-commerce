@@ -32,7 +32,7 @@ const Profile = () => {
     if (profileTab === "favorites") {
       return <FavoriteProducts />;
     }
-    if (profileTab === "adresses") {
+    if (profileTab === "addresses") {
       return <AddressList />;
     }
 

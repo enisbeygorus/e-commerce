@@ -1,4 +1,5 @@
 export interface IAddress {
+  addressId: string;
   name: string;
   lastName: string;
   phone: string;
@@ -14,5 +15,5 @@ export interface IUser {
   name: string;
   userId: string;
   isAdmin: boolean;
-  adresses: Array<IAddress>;
+  addresses: Array<IAddress>;
 }
