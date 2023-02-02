@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import { IAddress } from "../../types/userTypes";
 import { useDispatch } from "react-redux";
-import { setAddress } from "../../store/reducers/user";
+import { setAddress, updateAddress } from "../../store/reducers/user";
 import { ReactSelect, SelectOptionType } from "../Dropdown/ReactSelect";
 
 interface IAddAddress {
@@ -12,29 +12,33 @@ interface IAddAddress {
   onFail: () => void;
   onSubmitStart: () => void;
   address?: IAddress | null;
+  isEdit: boolean;
 }
 
 const AddAddress = ({
   onSubmitStart,
   onSuccess,
   address,
+  isEdit,
   onFail,
 }: IAddAddress) => {
   const dispatch = useDispatch();
 
-  console.log("address:", address);
-
-  const [addressInfo, setAddresseInfo] = useState<IAddress>({
-    addressId: "",
-    name: "",
-    adddressTitle: "",
-    city: "",
-    district: "",
-    country: "",
-    fullAddress: "",
-    lastName: "",
-    phone: "",
-  });
+  const [addressInfo, setAddresseInfo] = useState<IAddress>(
+    address
+      ? address
+      : {
+          addressId: "",
+          name: "",
+          adddressTitle: "",
+          city: "",
+          district: "",
+          country: "",
+          fullAddress: "",
+          lastName: "",
+          phone: "",
+        }
+  );
 
   const [isValid, setIsValid] = useState<boolean>(true);
 
@@ -43,8 +47,6 @@ const AddAddress = ({
       setAddresseInfo(address);
     }
   }, [address]);
-
-  // console.log("addressInfo:", addressInfo);
 
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,19 +64,34 @@ const AddAddress = ({
       return;
     }
 
-    onSubmitStart();
-    setTimeout(() => {
-      onSuccess();
-    }, 2000);
-
     // onFail();
 
+    const phoneModified = addressInfo.phone
+      .replace("(", "")
+      .replace(")", "")
+      .split(" ")
+      .join("");
     const _addresseInfo = {
       ...addressInfo,
       addressId: Math.floor(Math.random() * 1000000).toString(),
+      phone: phoneModified,
     };
 
-    dispatch(setAddress(_addresseInfo));
+    console.log("_addresseInfo:", _addresseInfo);
+    onSubmitStart();
+
+    if (isEdit) {
+      setTimeout(() => {
+        onSuccess();
+        dispatch(updateAddress(_addresseInfo));
+      }, 2000);
+      return;
+    }
+
+    setTimeout(() => {
+      onSuccess();
+      dispatch(setAddress(_addresseInfo));
+    }, 2000);
   };
 
   const setAddresseInfoHandler = (propertyName: string, value: string) => {
@@ -100,6 +117,20 @@ const AddAddress = ({
   };
   const districtDropDownOnChange = (option: SelectOptionType) => {
     setAddresseInfoHandler("district", option.value);
+  };
+
+  const countrySelectOptions = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
+
+  const selectDefaultValueHandler = (value: string) => {
+    if (!value) return undefined;
+    const option = countrySelectOptions.find(
+      (option) => option.value === value
+    );
+    return option;
   };
 
   return (
@@ -141,7 +172,8 @@ const AddAddress = ({
           <div className="flex-1 px-2">
             <div>Phone</div>
             <InputMask
-              defaultValue={addressInfo.phone}
+              // defaultValue={addressInfo.phone}
+              defaultValue={"05112223344"}
               onChange={inputOnChangeHandler}
               name="phone"
               className="bg-gray-50 border border-gray-300 rounded-md w-full p-2 h-11"
@@ -152,16 +184,13 @@ const AddAddress = ({
           <div className="flex-1 px-2">
             <div>Country</div>
             <ReactSelect
+              defaultValue={selectDefaultValueHandler(addressInfo.country)}
               wrapperStyle={{
                 backgroundColor: "#f9fafb",
                 height: "44px",
                 borderRadius: "8px",
               }}
-              options={[
-                { value: "chocolate", label: "Chocolate" },
-                { value: "strawberry", label: "Strawberry" },
-                { value: "vanilla", label: "Vanilla" },
-              ]}
+              options={countrySelectOptions}
               onChange={countryDropDownOnChange}
             />
           </div>
@@ -170,32 +199,26 @@ const AddAddress = ({
           <div className="flex-1 px-2">
             <div>City</div>
             <ReactSelect
+              defaultValue={selectDefaultValueHandler(addressInfo.city)}
               wrapperStyle={{
                 backgroundColor: "#f9fafb",
                 height: "44px",
                 borderRadius: "8px",
               }}
-              options={[
-                { value: "chocolate", label: "Chocolate" },
-                { value: "strawberry", label: "Strawberry" },
-                { value: "vanilla", label: "Vanilla" },
-              ]}
+              options={countrySelectOptions}
               onChange={cityDropDownOnChange}
             />
           </div>
           <div className="flex-1 px-2">
             <div>District</div>
             <ReactSelect
+              defaultValue={selectDefaultValueHandler(addressInfo.district)}
               wrapperStyle={{
                 backgroundColor: "#f9fafb",
                 height: "44px",
                 borderRadius: "8px",
               }}
-              options={[
-                { value: "chocolate", label: "Chocolate" },
-                { value: "strawberry", label: "Strawberry" },
-                { value: "vanilla", label: "Vanilla" },
-              ]}
+              options={countrySelectOptions}
               onChange={districtDropDownOnChange}
             />
           </div>

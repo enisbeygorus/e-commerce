@@ -3,7 +3,7 @@ import { ACTION_SELECTORS } from "../../store/actionSelectors";
 import Button from "../Button/Button";
 import Address from "./Address";
 import { ModalAddAddress } from "../Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteAddress } from "../../store/reducers/user";
 import { IAddress } from "../../types";
@@ -13,6 +13,12 @@ const AddressList = () => {
   const { user } = useSelector(ACTION_SELECTORS.getUser);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [editAddress, setEditAddress] = useState<IAddress | null>(null);
+
+  useEffect(() => {
+    if (editAddress) {
+      toggleAddAdressModal(true);
+    }
+  }, [editAddress]);
 
   const toggleAddAdressModal = (value?: boolean) => {
     if (typeof value === "boolean") {
@@ -24,6 +30,7 @@ const AddressList = () => {
 
   const onModalClose = () => {
     toggleAddAdressModal(false);
+    setEditAddress(null);
   };
 
   const deleteAddressHandler = (addressId: string) => {
@@ -40,7 +47,6 @@ const AddressList = () => {
 
     if (filteredAddress) {
       setEditAddress(filteredAddress);
-      toggleAddAdressModal(true);
     }
   };
 

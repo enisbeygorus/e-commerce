@@ -39,9 +39,19 @@ const userSlice = createSlice({
         (address) => address.addressId === action.payload
       );
     },
+    updateAddress: (state, action: PayloadAction<IAddress>) => {
+      if (!state.user || !action.payload) return;
+      if (state.user.addresses.length < 1) return;
+      const indexOfAddress = state.user.addresses.findIndex(
+        (address) => address.addressId === action.payload.addressId
+      );
+
+      state.user.addresses[indexOfAddress] = action.payload;
+    },
   },
 });
 
-export const { setUser, setAddress, deleteAddress } = userSlice.actions;
+export const { setUser, setAddress, deleteAddress, updateAddress } =
+  userSlice.actions;
 
 export default userSlice.reducer;

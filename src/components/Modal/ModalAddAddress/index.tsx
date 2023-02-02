@@ -60,6 +60,10 @@ const ModalAddAddress = ({
   };
 
   const contentHandler = () => {
+    if (!isModalOpen) {
+      return null;
+    }
+
     if (isModalTaskCompleted) {
       return <CompletedAnimationContent />;
     }
@@ -68,6 +72,7 @@ const ModalAddAddress = ({
     }
     return (
       <AddAddress
+        isEdit={editAddress ? true : false}
         address={editAddress}
         onSuccess={onAddAddressSuccess}
         onFail={onAddAddressFail}
