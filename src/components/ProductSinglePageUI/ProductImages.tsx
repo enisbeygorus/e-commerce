@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IProduct } from "../../types";
 
 type IProductImages = Pick<IProduct, "imageUrls">;
@@ -12,16 +12,22 @@ const ProductImages = ({ imageUrls }: IProductImages) => {
     }
   };
 
+  useEffect(() => {
+    if (imageUrls && imageUrls.length > 0) {
+      setSelectedImage(imageUrls[0]);
+    }
+  }, [imageUrls]);
+
   return (
     <div className="w-full mb-2 flex flex-col md:m-0 md:flex-row flex-1">
       <div className=" flex justify-center order-2 w-full mb-4 px-2 md:block overflow-y-auto md:aspect-square md:w-32 md:order-none">
-        <div className="md:px-2 overflow-auto whitespace-nowrap cursor-pointer">
+        <div className="h-full md:px-2 overflow-auto whitespace-nowrap cursor-pointer">
           {imageUrls.map((imageUrl, index) => {
             return (
               <div
                 onClick={() => selectImageHandler(imageUrl)}
                 key={index}
-                className="inline-block w-16 md:w-full mr-4 md:block md:mb-4 md:mr-0"
+                className="inline-block w-16 md:w-full mr-4 md:block md:mb-4 md:mr-0 h-24 border-2 rounded-md"
               >
                 <img
                   alt="product_image_select"

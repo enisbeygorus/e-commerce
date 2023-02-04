@@ -6,6 +6,9 @@ export interface IModal {
   header?: React.ReactNode;
   content: React.ReactNode;
   onClose?: () => void;
+  onAccept?: () => void;
+  onDecline?: () => void;
+  isVerification?: boolean;
 }
 
 export const Modal = ({
@@ -13,6 +16,9 @@ export const Modal = ({
   onClose,
   content,
   header = null,
+  isVerification,
+  onAccept,
+  onDecline,
 }: IModal) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
@@ -47,11 +53,15 @@ export const Modal = ({
           onClick={() => toggleModalHandler(false)}
           className="overlay w-full h-full absolute top-0 left-0 bg-gray-700 opacity-50"
         ></div>
-        <div className="relative w-full max-w-2xl md:h-auto z-10 p-4 sm:p-0">
+        <div
+          className={`${
+            isVerification ? "max-w-md" : "max-w-2xl w-full"
+          } relative w-full md:h-auto z-10 p-4 sm:p-0`}
+        >
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <div
               className={`${
-                header ? "border-b p-4 " : "px-2"
+                header ? "border-b p-4 " : "p-2"
               } flex items-start justify-between rounded-t dark:border-gray-600`}
             >
               {header ? header : null}
@@ -68,22 +78,26 @@ export const Modal = ({
             <div className="p-6 space-y-6 overflow-y-auto max-h-[80vh]">
               {content}
             </div>
-            {/* <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-              <button
-                data-modal-hide="defaultModal"
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                I accept
-              </button>
-              <button
-                data-modal-hide="defaultModal"
-                type="button"
-                className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
-              >
-                Decline
-              </button>
-            </div> */}
+            {isVerification ? (
+              <div className="flex justify-center items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button
+                  onClick={onAccept}
+                  data-modal-hide="defaultModal"
+                  type="button"
+                  className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                >
+                  I accept
+                </button>
+                <button
+                  onClick={onDecline}
+                  data-modal-hide="defaultModal"
+                  type="button"
+                  className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                >
+                  Decline
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

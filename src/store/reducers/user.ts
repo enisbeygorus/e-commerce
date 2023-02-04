@@ -36,7 +36,7 @@ const userSlice = createSlice({
       if (!state.user || !action.payload) return;
       if (state.user.addresses.length < 1) return;
       state.user.addresses = state.user.addresses.filter(
-        (address) => address.addressId === action.payload
+        (address) => address.addressId !== action.payload
       );
     },
     updateAddress: (state, action: PayloadAction<IAddress>) => {

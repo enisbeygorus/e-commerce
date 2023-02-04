@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { ACTION_SELECTORS } from "../../store/actionSelectors";
 import Button from "../Button/Button";
 import Address from "./Address";
-import { ModalAddAddress } from "../Modal";
+import { ModalAddAddress, VerificationModal } from "../Modal";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteAddress } from "../../store/reducers/user";
@@ -11,8 +11,13 @@ import { IAddress } from "../../types";
 const AddressList = () => {
   const dispatch = useDispatch();
   const { user } = useSelector(ACTION_SELECTORS.getUser);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isAddAddressModalOpen, setIsAddAddressModalOpen] =
+    useState<boolean>(false);
   const [editAddress, setEditAddress] = useState<IAddress | null>(null);
+  const [isVerificationModalOpen, setIsVerificationModalOpen] =
+    useState<boolean>(false);
+  const [currentlySelectedDeleteId, setCurrentlySelectedDeleteId] =
+    useState<string>("");
 
   useEffect(() => {
     if (editAddress) {
@@ -22,19 +27,15 @@ const AddressList = () => {
 
   const toggleAddAdressModal = (value?: boolean) => {
     if (typeof value === "boolean") {
-      setIsModalOpen(value);
+      setIsAddAddressModalOpen(value);
       return;
     }
-    setIsModalOpen((prev) => !prev);
+    setIsAddAddressModalOpen((prev) => !prev);
   };
 
-  const onModalClose = () => {
+  const onAddAddressModalClose = () => {
     toggleAddAdressModal(false);
     setEditAddress(null);
-  };
-
-  const deleteAddressHandler = (addressId: string) => {
-    dispatch(deleteAddress(addressId));
   };
 
   const editAddressHandler = (addressId: string) => {
@@ -48,6 +49,41 @@ const AddressList = () => {
     if (filteredAddress) {
       setEditAddress(filteredAddress);
     }
+  };
+
+  const deleteAddressHandler = (addressId: string) => {
+    setIsVerificationModalOpen(true);
+    handleCurrentlySelectedDeleteId(addressId);
+  };
+
+  const handleCurrentlySelectedDeleteId = (id: string) => {
+    setCurrentlySelectedDeleteId(id);
+  };
+
+  const toggleVerificationModal = (value?: boolean) => {
+    if (typeof value === "boolean") {
+      setIsVerificationModalOpen(value);
+      return;
+    }
+    setIsVerificationModalOpen((prev) => !prev);
+  };
+
+  const onVerificationModalClose = () => {
+    toggleVerificationModal(false);
+    handleCurrentlySelectedDeleteId("");
+  };
+
+  const onVerificationModalAccept = () => {
+    if (currentlySelectedDeleteId) {
+      dispatch(deleteAddress(currentlySelectedDeleteId));
+    }
+    handleCurrentlySelectedDeleteId("");
+    toggleVerificationModal(false);
+  };
+
+  const onVerificationModalCancel = () => {
+    handleCurrentlySelectedDeleteId("");
+    toggleVerificationModal(false);
   };
 
   const listAddresses = () => {
@@ -87,8 +123,15 @@ const AddressList = () => {
       <ModalAddAddress
         editAddress={editAddress}
         toggleAddAdressModal={toggleAddAdressModal}
-        onModalClose={onModalClose}
-        isModalOpen={isModalOpen}
+        onModalClose={onAddAddressModalClose}
+        isModalOpen={isAddAddressModalOpen}
+      />
+      <VerificationModal
+        onVerificationModalCancel={onVerificationModalCancel}
+        onVerificationModalAccept={onVerificationModalAccept}
+        onModalClose={onVerificationModalClose}
+        toggleVerificationModal={toggleVerificationModal}
+        isModalOpen={isVerificationModalOpen}
       />
     </div>
   );

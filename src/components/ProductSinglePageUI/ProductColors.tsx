@@ -1,4 +1,5 @@
 import { IAvailableColors, IProductColor } from "../../types";
+import { Link } from "react-router-dom";
 
 interface IProductColors {
   availableColors: Array<IAvailableColors>;
@@ -21,22 +22,24 @@ const ProductColors = ({
 
   const colorsList = availableColors.map((colorData, index) => {
     return (
-      <li className="mr-4 overflow-hidden cursor-pointer" key={index}>
-        <div
-          onClick={() => selectColorHandler(colorData.productId)}
-          className={`${
-            colorData.productId === colorSelectedProductId
-              ? "border-green-700"
-              : "border-transparent"
-          } w-20 aspect-auto p-1 border-4 rounded-md`}
-        >
-          <img
-            className="rounded-md"
-            alt="color_item"
-            src={colorData.imageUrl}
-          />
-        </div>
-      </li>
+      <Link key={index} to={"/products/" + colorData.productUrl}>
+        <li className="mr-4 overflow-hidden cursor-pointer">
+          <div
+            onClick={() => selectColorHandler(colorData.productId)}
+            className={`${
+              colorData.productId === colorSelectedProductId
+                ? "border-green-700"
+                : "border-transparent"
+            } w-20 aspect-auto p-1 border-4 rounded-md`}
+          >
+            <img
+              className="rounded-md"
+              alt="color_item"
+              src={colorData.imageUrl}
+            />
+          </div>
+        </li>
+      </Link>
     );
   });
 

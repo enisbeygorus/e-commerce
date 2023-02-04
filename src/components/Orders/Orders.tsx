@@ -5,7 +5,7 @@ const Orders = () => {
     {
       id: "12345",
       imageUrl:
-        "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
+        "https://static8.depositphotos.com/1559986/1051/i/950/depositphotos_10513998-stock-photo-red-jacket.jpg",
       orderNo: 112233,
       date: "25/12/2022, 10:20",
       orderStatus: "completed",
@@ -16,7 +16,7 @@ const Orders = () => {
     {
       id: "1111",
       imageUrl:
-        "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
+        "https://static8.depositphotos.com/1559986/1051/i/950/depositphotos_10513998-stock-photo-red-jacket.jpg",
       orderNo: 22334455,
       date: "25/12/2022, 10:20",
       orderStatus: "failed",
@@ -27,7 +27,7 @@ const Orders = () => {
     {
       id: "12341234",
       imageUrl:
-        "https://www.slatra.com.tr/Uploads/UrunResimleri/thumb/erkek-acikgri-orme-yarim-fermuar-overs-bbc417.jpg",
+        "https://static8.depositphotos.com/1559986/1051/i/950/depositphotos_10514033-stock-photo-green-jacket.jpg",
       orderNo: 234125,
       date: "25/12/2022, 10:20",
       orderStatus: "preparing",
