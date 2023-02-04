@@ -38,6 +38,7 @@ const userSlice = createSlice({
       state.user.addresses = state.user.addresses.filter(
         (address) => address.addressId !== action.payload
       );
+      setLocal<IUser>(LOCAL_STORAGE_SELECTORS.user, state.user);
     },
     updateAddress: (state, action: PayloadAction<IAddress>) => {
       if (!state.user || !action.payload) return;

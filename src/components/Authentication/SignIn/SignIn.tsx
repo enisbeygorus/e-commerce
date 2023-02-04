@@ -17,7 +17,20 @@ const SignIn = () => {
       isAdmin: false,
       token: "12345es1sdgz",
       userId: "12345",
-      addresses: [],
+      addresses: [
+        {
+          adddressTitle: "Home 1",
+          addressId: "926073",
+          city: "strawberry",
+          country: "chocolate",
+          district: "chocolate",
+          fullAddress:
+            "asdasds asdasdas asdasdas asdasdas asdasdas asdasdas asdasdas asdasdas",
+          lastName: "testlastname",
+          name: "Testname",
+          phone: "0(511) 111 11 11",
+        },
+      ],
     };
     dispatch(setUser(user));
   };
