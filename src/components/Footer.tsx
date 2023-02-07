@@ -70,11 +70,24 @@ const Footer = () => {
       <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div className="sm:flex sm:items-center sm:justify-between">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          © 2023{" "}
-          <a href="/" className="hover:underline">
-            eCommerce
+          © 2023 made by{" "}
+          <a
+            href="https://github.com/Enisbeygorus"
+            className="hover:underline underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Enis Beygörüş
           </a>
-          . All Rights Reserved.
+          {" - "}
+          <a
+            href="https://www.linkedin.com/in/enis-sad%C4%B1k-beyg%C3%B6r%C3%BC%C5%9F-461820194/"
+            className="hover:underline underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Linked
+          </a>
         </span>
         <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
           <a
